@@ -1,13 +1,16 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GetFights" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GetFights" this:GetFights.in_intEncounterID="2685" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:uasc="clr-namespace:UiPath.Activities.System.Collections;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_intPageLimit" Type="InArgument(x:Int32)" />
     <x:Property Name="in_intPage" Type="InArgument(x:Int32)" />
+    <x:Property Name="io_collTupleFights" Type="InArgument(scg:ICollection(s:Tuple(x:String, x:Int32)))" />
+    <x:Property Name="in_intEncounterID" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_intEncounterDifficulty" Type="InArgument(x:Int32)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1692,1684</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1692,1566</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetFights_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -46,6 +49,8 @@
       <x:String>System.Dynamic</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Collections.Specialized</x:String>
+      <x:String>UiPath.Activities.System.Collections</x:String>
+      <x:String>System.Runtime.CompilerServices</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -106,16 +111,18 @@
       <AssemblyReference>System.Linq.Parallel</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Runtime.CompilerServices.VisualC</AssemblyReference>
+      <AssemblyReference>System.Runtime.CompilerServices.Unsafe</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetFights" sap:VirtualizedContainerService.HintSize="746,1619" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetFights" sap:VirtualizedContainerService.HintSize="648,1501" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strContent" />
       <Variable x:TypeArguments="x:Int32" Name="intStatus" />
       <Variable x:TypeArguments="njl:JObject" Name="jContent" />
       <Variable x:TypeArguments="x:String" Name="strQueryBody">
         <Variable.Default>
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;{reportData{reports(guildID:661151,page:&quot; &amp; in_intPage.ToString &amp; &quot;,  limit:&quot; &amp; in_intPageLimit.ToString &amp; &quot;){data{code,fights(encounterID: 2685,difficulty:5){id,difficulty,name},startTime,endTime}}}} #5 = Mythic 2685 = Sarkareth&quot;" />
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;{reportData{reports(guildID:661151,page:&quot; &amp; in_intPage.ToString &amp; &quot;,  limit:&quot; &amp; in_intPageLimit.ToString &amp; &quot;){data{code,fights(encounterID:&quot; &amp; in_intEncounterID.ToString &amp; &quot;,difficulty:&quot; &amp; in_intEncounterDifficulty.ToString &amp;&quot;){id,difficulty,name},startTime,endTime}}}} #5 = Mythic 2685 = Sarkareth&quot;" />
         </Variable.Default>
       </Variable>
       <Variable x:TypeArguments="x:Int32" Name="intIdx" />
@@ -125,7 +132,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[&quot;{&quot;&quot;query&quot;&quot;:&quot;&quot;&quot; &amp; strQueryBody &amp; &quot;&quot;&quot;}&quot;]" BodyFormat="application/json" DisplayName="Get Fight  - HTTP Request" EnableSSLVerification="True" EndPoint="[in_Config(&quot;BaseUrl&quot;).tostring &amp; in_Config(&quot;RequestEndPoint&quot;).tostring]" sap:VirtualizedContainerService.HintSize="684,70" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" Result="[strContent]" StatusCode="[intStatus]" TimeoutMS="6000">
+    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[&quot;{&quot;&quot;query&quot;&quot;:&quot;&quot;&quot; &amp; strQueryBody &amp; &quot;&quot;&quot;}&quot;]" BodyFormat="application/json" DisplayName="Get Fight  - HTTP Request" EnableSSLVerification="True" EndPoint="[in_Config(&quot;BaseUrl&quot;).tostring &amp; in_Config(&quot;RequestEndPoint&quot;).tostring]" sap:VirtualizedContainerService.HintSize="586,70" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" Result="[strContent]" StatusCode="[intStatus]" TimeoutMS="6000">
       <ui:HttpClient.Attachments>
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.Attachments>
@@ -144,22 +151,22 @@
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
-    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="684,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jContent]" JsonString="[strContent]" />
-    <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="[intIdx]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="684,1298" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)]">
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="586,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jContent]" JsonString="[strContent]" />
+    <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="[intIdx]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="586,1180" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="njl:JToken">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="njl:JToken" Name="currentItem" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="650,1112" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="552,994" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)(intIdx)(&quot;fights&quot;).Count &lt;&gt; 0]" sap:VirtualizedContainerService.HintSize="608,894" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)(intIdx)(&quot;fights&quot;).Count &lt;&gt; 0]" sap:VirtualizedContainerService.HintSize="510,906" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="574,712" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence sap:VirtualizedContainerService.HintSize="476,724" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="strReportCode" />
                   </Sequence.Variables>
@@ -168,7 +175,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="report code - Assign" sap:VirtualizedContainerService.HintSize="532,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign DisplayName="report code - Assign" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_1">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[strReportCode]</OutArgument>
                     </Assign.To>
@@ -176,31 +183,36 @@
                       <InArgument x:TypeArguments="x:String">[jContent("data")("reportData")("reports")("data")(intIdx)("code").tostring]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:DeserializeJsonArray JsonArray="{x:Null}" DisplayName="Deserialize JSON Array" sap:VirtualizedContainerService.HintSize="532,60" sap2010:WorkflowViewState.IdRef="DeserializeJsonArray_1" JsonString="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)(intIdx)(&quot;fights&quot;).ToString]" />
-                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="532,90" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)(intIdx)(&quot;fights&quot;).ToString]" />
-                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532,272" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-                    <ui:CommentOut.Body>
-                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="njl:JToken">[jContent("data")("reportData")("reports")("data")(intIdx)("fights")]</InArgument>
-                          </Assign.Value>
-                        </Assign>
-                      </Sequence>
-                    </ui:CommentOut.Body>
-                  </ui:CommentOut>
+                  <ui:DeserializeJsonArray JsonArray="{x:Null}" DisplayName="Deserialize JSON Array" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="DeserializeJsonArray_1" JsonString="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)(intIdx)(&quot;fights&quot;).ToString]" />
+                  <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="434,415" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)(intIdx)(&quot;fights&quot;)]">
+                    <ui:ForEach.Body>
+                      <ActivityAction x:TypeArguments="njl:JToken">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="njl:JToken" Name="currentItem" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uasc:AppendItemToCollection x:TypeArguments="s:Tuple(x:String, x:Int32)" Collection="[io_collTupleFights]" DisplayName="Append Items to Collection" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="AppendItemToCollection`1_2">
+                            <uasc:AppendItemToCollection.Items>
+                              <scg:List x:TypeArguments="InArgument(s:Tuple(x:String, x:Int32))" Capacity="4">
+                                <InArgument x:TypeArguments="s:Tuple(x:String, x:Int32)">[tuple.Create(jContent("data")("reportData")("reports")("data")(intIdx)("code").tostring, cint(currentItem("id").ToString))]</InArgument>
+                              </scg:List>
+                            </uasc:AppendItemToCollection.Items>
+                          </uasc:AppendItemToCollection>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEach.Body>
+                  </ui:ForEach>
                 </Sequence>
               </If.Then>
               <If.Else>
                 <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4" />
               </If.Else>
             </If>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="608,90" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[currentItem.ToString]" />
           </Sequence>
         </ActivityAction>
       </ui:ForEach.Body>
