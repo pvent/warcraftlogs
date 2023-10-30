@@ -6,7 +6,7 @@ using UiPath.Core;
 using UiPath.Core.Activities.Storage;
 using UiPath.Orchestrator.Client.Models;
 
-namespace BackgroundREF
+namespace WarcraftLogs_Dispatcher
 {
     public partial class CodedWorkflow : CodedWorkflowBase
     {
