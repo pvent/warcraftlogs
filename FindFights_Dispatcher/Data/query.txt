@@ -1,0 +1,1 @@
+{\"query\":\"{reportData{reports(guildID:661151,page:1){from,to,last_page, total,data{code,fights(encounterID: 2685,difficulty:5){id,difficulty,name},startTime,endTime}}}} #5 = Mythic 2685 = Sarkareth\"}

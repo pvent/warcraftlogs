@@ -1,0 +1,735 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GetDataFromReport" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="io_browser" Type="InOutArgument(ui:UiElement)" />
+    <x:Property Name="in_strWipeNr" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1690,7540</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>GetDataFromReport_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="GetDataFromReport" sap:VirtualizedContainerService.HintSize="846,7475" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dtDPS" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtTemp" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtDmgTkn" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtHealing" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtBreaths" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtDefensives" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtHealingPotsCasts" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtHealingPotsHealing" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtDpsPots" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtHurtlingEvents" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtDriftingEmbers" />
+      <Variable x:TypeArguments="s:String[]" Default="[{&quot;dtDPS&quot;, &quot;dtDmgTkn&quot;, &quot;dtHealing&quot;, &quot;dtBreaths&quot;, &quot;dtDefensives&quot;, &quot;dtHealingPotsCasts&quot;, &quot;dtHealingPotsHealing&quot;, &quot;dtDpsPots&quot;, &quot;dtHurtlingEvents&quot;, &quot;dtDriftingEmbers&quot;}]" Name="arrTablesNames" />
+      <Variable x:TypeArguments="x:String" Name="strTempFullPath" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application/Browser" sap:VirtualizedContainerService.HintSize="784,7364" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[io_browser]" InteractionMode="DebuggerApi" IsIncognito="True" OpenMode="Never" OutUiElement="[io_browser]" ScopeGuid="f3e41ffb-11fc-45fd-b7d9-629da52e2c9d" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="GetData - Do" sap:VirtualizedContainerService.HintSize="750,7227" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="strWipeCount" />
+              <Variable x:TypeArguments="x:Int32" Name="intWipeCounter" />
+              <Variable x:TypeArguments="x:String" Name="strUrl" />
+              <Variable x:TypeArguments="x:String" Name="strDate" />
+              <Variable x:TypeArguments="s:DateTime" Name="dateDate" />
+              <Variable x:TypeArguments="x:Int32" Name="idx" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="Shared info - Sequence" sap:VirtualizedContainerService.HintSize="688,4199" sap2010:WorkflowViewState.IdRef="Sequence_16">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence DisplayName="General data - Sequence" sap:VirtualizedContainerService.HintSize="488,80" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="temp full path - Assign" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strTempFullPath]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[Environment.CurrentDirectory &amp; "\data\temp\"]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'SPAN  report-start-date'" sap:VirtualizedContainerService.HintSize="434,107" sap2010:WorkflowViewState.IdRef="GetValue_3">
+                  <ui:GetValue.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="052f6bc0-7aeb-4c31-a446-88cdbb55ddee" InformativeScreenshot="61ed1e585fd5d84a6366cdfac6ce90d2" Selector="&lt;webctrl id='report-start-date' tag='SPAN' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:GetValue.Target>
+                  <ui:GetValue.Value>
+                    <OutArgument x:TypeArguments="x:String">[strDate]</OutArgument>
+                  </ui:GetValue.Value>
+                </ui:GetValue>
+                <Assign DisplayName="date Assign" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="s:DateTime">[dateDate]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(strDate, "ddd MMM dd yyyy", System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="format date - Assign" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strDate]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[dateDate.ToString("dd/MM/yyyy")]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="url" DisplayName="Get Attribute 'DIV  report-fight-selec...'" sap:VirtualizedContainerService.HintSize="434,203" sap2010:WorkflowViewState.IdRef="GetAttribute_2">
+                  <ui:GetAttribute.Result>
+                    <OutArgument x:TypeArguments="x:String">[strUrl]</OutArgument>
+                  </ui:GetAttribute.Result>
+                  <ui:GetAttribute.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="06c85f09-9734-4788-889a-f1247a86da13" InformativeScreenshot="7d779a98695b3b097332babd0f5b6805" Selector="&lt;webctrl id='report-start-date' tag='SPAN' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:GetAttribute.Target>
+                </ui:GetAttribute>
+              </Sequence>
+              <TryCatch DisplayName="shared inf - Try Catch" sap:VirtualizedContainerService.HintSize="488,581" sap2010:WorkflowViewState.IdRef="TryCatch_6">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch.Try>
+                  <Sequence DisplayName="DPS  parse incl - Sequence" sap:VirtualizedContainerService.HintSize="450,353" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:NavigateTo Browser="[io_browser]" DisplayName="dps  - Navigate To" sap:VirtualizedContainerService.HintSize="388,85" sap2010:WorkflowViewState.IdRef="NavigateTo_8" Url="[strUrl &amp; &quot;&amp;type=damage-done&quot;]" />
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="DPS - Process\DownloadReportCsvFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Process\DownloadReportCsvFile.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_strReportLocation">[strTempFullPath &amp; "dtDPS"]</InArgument>
+                        <InArgument x:TypeArguments="ui:UiElement" x:Key="in_browser">[io_browser]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                  </Sequence>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="454,21" sap2010:WorkflowViewState.IdRef="Catch`1_6">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="s:Exception">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                      </ActivityAction.Argument>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[exception.Message]" />
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+              <TryCatch DisplayName="shared inf - Try Catch" sap:VirtualizedContainerService.HintSize="488,581" sap2010:WorkflowViewState.IdRef="TryCatch_7">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch.Try>
+                  <Sequence DisplayName="Healing parse incl  - Sequence" sap:VirtualizedContainerService.HintSize="450,353" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:NavigateTo Browser="[io_browser]" DisplayName="healing - Navigate To" sap:VirtualizedContainerService.HintSize="388,85" sap2010:WorkflowViewState.IdRef="NavigateTo_9" Url="[strUrl &amp; &quot;&amp;type=healing&quot;]" />
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="dtHealing - Process\DownloadReportCsvFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Process\DownloadReportCsvFile.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_strReportLocation">[strTempFullPath &amp; "dtHealing"]</InArgument>
+                        <InArgument x:TypeArguments="ui:UiElement" x:Key="in_browser">[io_browser]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                  </Sequence>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="454,21" sap2010:WorkflowViewState.IdRef="Catch`1_7">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="s:Exception">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                      </ActivityAction.Argument>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[exception.Message]" />
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+              <TryCatch DisplayName="shared inf - Try Catch" sap:VirtualizedContainerService.HintSize="488,581" sap2010:WorkflowViewState.IdRef="TryCatch_8">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch.Try>
+                  <Sequence DisplayName="DmgTaken - Sequence" sap:VirtualizedContainerService.HintSize="450,353" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:NavigateTo Browser="[io_browser]" DisplayName="dmg taken - Navigate To" sap:VirtualizedContainerService.HintSize="388,85" sap2010:WorkflowViewState.IdRef="NavigateTo_10" Url="[strUrl &amp; &quot;&amp;type=damage-taken&quot;]" />
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="dtDmgTkn - Process\DownloadReportCsvFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Process\DownloadReportCsvFile.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_strReportLocation">[strTempFullPath &amp; "dtDmgTkn"]</InArgument>
+                        <InArgument x:TypeArguments="ui:UiElement" x:Key="in_browser">[io_browser]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                  </Sequence>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="454,21" sap2010:WorkflowViewState.IdRef="Catch`1_8">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="s:Exception">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                      </ActivityAction.Argument>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[exception.Message]" />
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+              <TryCatch DisplayName="shared inf - Try Catch" sap:VirtualizedContainerService.HintSize="488,581" sap2010:WorkflowViewState.IdRef="TryCatch_9">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch.Try>
+                  <Sequence DisplayName="Defensives - Sequence" sap:VirtualizedContainerService.HintSize="450,353" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:NavigateTo Browser="[io_browser]" DisplayName="defennsives - Navigate To" sap:VirtualizedContainerService.HintSize="388,85" sap2010:WorkflowViewState.IdRef="NavigateTo_2" Url="[strUrl.Replace(&quot;#&quot;,&quot;#type=casts&amp;pins=2%24Off%24%23244F4B%24expression%24ability.id%20IN%20(49998,%2048707,%2048743,%2049039,%2048792,%20198589,%20196555,%205487,%2022842,%2022812,%20108238,%20319454,%2061336,%20363916,%20374348,%20109304,%20272679,%20264735,%2018265,%20342245,%2055342,%20110959,%2045438,%20235450,%20235313,%2011426,%20235219,%20122783,%20122278,%2022630,%20122470,%20498,%20403876,%201022,%20642,%20633,%20184662,%20586,%2019236,%2047585,%201966,%20185311,%205277,%2031224,%20974,%20108271,%20198103,%20234153,%206789,%20108416,%20104773,%2034428,%20386208,%20202168,%2023920,%20383762,%20190456,%20118038,%20184364,%206262,%20370511)%20AND%20source.role%20!%3D%20'tank'&amp;&quot;)]" />
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="dtDefensives - Process\DownloadReportCsvFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Process\DownloadReportCsvFile.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_strReportLocation">[strTempFullPath &amp; "dtDefensives"]</InArgument>
+                        <InArgument x:TypeArguments="ui:UiElement" x:Key="in_browser">[io_browser]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                  </Sequence>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="454,21" sap2010:WorkflowViewState.IdRef="Catch`1_9">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="s:Exception">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                      </ActivityAction.Argument>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[exception.Message]" />
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+              <TryCatch DisplayName="shared inf - Try Catch" sap:VirtualizedContainerService.HintSize="488,859" sap2010:WorkflowViewState.IdRef="TryCatch_10">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch.Try>
+                  <Sequence DisplayName="HealingPots - Sequence" sap:VirtualizedContainerService.HintSize="450,631" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:NavigateTo Browser="[io_browser]" DisplayName="healthstones &amp; potion - Navigate To" sap:VirtualizedContainerService.HintSize="388,85" sap2010:WorkflowViewState.IdRef="NavigateTo_3" Url="[strUrl.Replace(&quot;#&quot;,&quot;#type=casts&amp;pins=2%24Off%24%23244F4B%24expression%24ability.id%20IN%20(6262,%20370511)&amp;&quot;)]" />
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="dtHealingPotsCasts - Process\DownloadReportCsvFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Process\DownloadReportCsvFile.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_strReportLocation">[strTempFullPath &amp; "dtHealingPotsCasts"]</InArgument>
+                        <InArgument x:TypeArguments="ui:UiElement" x:Key="in_browser">[io_browser]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                    <ui:NavigateTo Browser="[io_browser]" DisplayName="healthstones &amp; potion healing - Navigate To" sap:VirtualizedContainerService.HintSize="388,85" sap2010:WorkflowViewState.IdRef="NavigateTo_5" Url="[strUrl.Replace(&quot;#&quot;,&quot;#type=healing&amp;pins=2%24Off%24%23244F4B%24expression%24ability.id%20IN%20(6262,%20370511)&amp;&quot;)]" />
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="dtHealingPotsHealing - Process\DownloadReportCsvFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Process\DownloadReportCsvFile.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_strReportLocation">[strTempFullPath &amp; "dtHealingPotsHealing"]</InArgument>
+                        <InArgument x:TypeArguments="ui:UiElement" x:Key="in_browser">[io_browser]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                  </Sequence>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="454,21" sap2010:WorkflowViewState.IdRef="Catch`1_10">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="s:Exception">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                      </ActivityAction.Argument>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[exception.Message]" />
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+              <TryCatch DisplayName="shared inf - Try Catch" sap:VirtualizedContainerService.HintSize="488,581" sap2010:WorkflowViewState.IdRef="TryCatch_11">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch.Try>
+                  <Sequence DisplayName="DpsPots - Sequence" sap:VirtualizedContainerService.HintSize="450,353" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:NavigateTo Browser="[io_browser]" DisplayName="dpsPots - Navigate To" sap:VirtualizedContainerService.HintSize="388,85" sap2010:WorkflowViewState.IdRef="NavigateTo_4" Url="[strUrl.Replace(&quot;#&quot;,&quot;#type=casts&amp;pins=2%24Off%24%23244F4B%24expression%24ability.id%20IN%20(371028)&amp;&quot;)]" />
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="dtDpsPots - Process\DownloadReportCsvFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Process\DownloadReportCsvFile.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_strReportLocation">[strTempFullPath &amp; "dtDpsPots"]</InArgument>
+                        <InArgument x:TypeArguments="ui:UiElement" x:Key="in_browser">[io_browser]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                  </Sequence>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="454,21" sap2010:WorkflowViewState.IdRef="Catch`1_11">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="s:Exception">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                      </ActivityAction.Argument>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[exception.Message]" />
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+            </Sequence>
+            <Sequence DisplayName="Fight specific - Sequence" sap:VirtualizedContainerService.HintSize="688,80" sap2010:WorkflowViewState.IdRef="Sequence_10">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <TryCatch DisplayName="fight specifc - Try Catch" sap:VirtualizedContainerService.HintSize="534,577" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch.Try>
+                  <Sequence DisplayName="Breaths - Sequence" sap:VirtualizedContainerService.HintSize="450,349" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:NavigateTo Browser="[io_browser]" DisplayName="Breaths - Navigate To" sap:VirtualizedContainerService.HintSize="388,85" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[strUrl.Replace(&quot;#&quot;,&quot;#type=auras&amp;spells=debuffs&amp;ability=402051&amp;pins=2%24Off%24%23244F4B%24expression%24%20ability.name%20%3D%20%22Searing%20Breath%22%20&amp;&quot;)]" />
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="dtBreaths - Process\DownloadReportCsvFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="Process\DownloadReportCsvFile.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_strReportLocation">[strTempFullPath &amp; "dtBreaths"]</InArgument>
+                        <InArgument x:TypeArguments="ui:UiElement" x:Key="in_browser">[io_browser]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                  </Sequence>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="454,21" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="s:Exception">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                      </ActivityAction.Argument>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[exception.Message]" />
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+              <TryCatch DisplayName="fight specifc - Try Catch" sap:VirtualizedContainerService.HintSize="534,577" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch.Try>
+                  <Sequence DisplayName="Drifting Embers - Sequence" sap:VirtualizedContainerService.HintSize="450,349" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:NavigateTo Browser="[io_browser]" DisplayName="drifting embers - Navigate To" sap:VirtualizedContainerService.HintSize="388,85" sap2010:WorkflowViewState.IdRef="NavigateTo_7" Url="[strUrl.Replace(&quot;#&quot;,&quot;#type=damage-taken&amp;pins=2%24Off%24%23244F4B%24expression%24%20ability.name%20%3D%20'Drifting%20Embers'%20and%20timestamp%20&lt;%2078000%20&amp;&quot;)]" />
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="dtDriftingEmbers - Process\DownloadReportCsvFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="Process\DownloadReportCsvFile.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_strReportLocation">[strTempFullPath &amp; "dtDriftingEmbers"]</InArgument>
+                        <InArgument x:TypeArguments="ui:UiElement" x:Key="in_browser">[io_browser]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                  </Sequence>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="454,21" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="s:Exception">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                      </ActivityAction.Argument>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[exception.Message]" />
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+              <TryCatch DisplayName="fight specifc - Try Catch" sap:VirtualizedContainerService.HintSize="534,1118" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch.Try>
+                  <Sequence DisplayName="HurtilngBarrage - Sequence" sap:VirtualizedContainerService.HintSize="496,890" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:NavigateTo Browser="[io_browser]" DisplayName="HurtilngBarrage - Navigate To" sap:VirtualizedContainerService.HintSize="434,85" sap2010:WorkflowViewState.IdRef="NavigateTo_6" Url="[strUrl.Replace(&quot;#&quot;,&quot;#type=damage-taken&amp;pins=2%24Off%24%23244F4B%24expression%24%20ability.name%20%3D%20'Hurtling%20Barrage'%20&amp;view=events&amp;&quot;)]" />
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="dtHurtlingEvents - Process\DownloadReportCsvFile.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="Process\DownloadReportCsvFile.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_strReportLocation">[strTempFullPath &amp; "dtHurtlingEvents"]</InArgument>
+                        <InArgument x:TypeArguments="ui:UiElement" x:Key="in_browser">[io_browser]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                    <ui:ReadCsvFile DataTable="[dtHurtlingEvents]" Delimitator="Comma" DisplayName="hurtling barrage - Read CSV" FilePath="[strTempFullPath &amp; &quot;dtHurtlingEvents.csv&quot;]" sap:VirtualizedContainerService.HintSize="434,154" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" />
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\HurtlingTableFormating.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Process\HurtlingTableFormating.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtHurtlingEvents">[dtHurtlingEvents]</InOutArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                    <ui:WriteCsvFile AddHeaders="True" DataTable="[dtHurtlingEvents]" Delimitator="Comma" DisplayName="Write CSV" FilePath="[strTempFullPath &amp; &quot;dtHurtlingEvents.csv&quot;]" sap:VirtualizedContainerService.HintSize="434,154" sap2010:WorkflowViewState.IdRef="WriteCsvFile_4" ShouldQuote="True" />
+                  </Sequence>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="500,21" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="s:Exception">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                      </ActivityAction.Argument>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[exception.Message]" />
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+            </Sequence>
+            <ui:ForEachFileX DisplayName="For Each File in Folder" Filter="*.csv" Folder="Data\Temp" sap:VirtualizedContainerService.HintSize="688,2753" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+              <ui:ForEachFileX.Body>
+                <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
+                  <ActivityAction.Argument1>
+                    <DelegateInArgument x:TypeArguments="si:FileInfo" Name="CurrentFile" />
+                  </ActivityAction.Argument1>
+                  <ActivityAction.Argument2>
+                    <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
+                  </ActivityAction.Argument2>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="654,2491" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="sd:DataTable" Name="dtInput" />
+                      <Variable x:TypeArguments="x:String" Name="strLog" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ReadCsvFile DataTable="[dtInput]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[CurrentFile.FullName]" sap:VirtualizedContainerService.HintSize="592,154" sap2010:WorkflowViewState.IdRef="ReadCsvFile_2" />
+                    <Sequence sap:VirtualizedContainerService.HintSize="592,2062" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="530,143" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[CurrentFile.Name &amp; &quot; formating&quot;]" />
+                      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="530,627" sap2010:WorkflowViewState.IdRef="TryCatch_12">
+                        <TryCatch.Try>
+                          <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="492,399" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:05">
+                            <ui:RetryScope.ActivityBody>
+                              <ActivityAction>
+                                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="450,224" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\FormatTable.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Process\FormatTable.xaml">
+                                    <ui:InvokeWorkflowFile.Arguments>
+                                      <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtLogs">[dtInput]</InOutArgument>
+                                    </ui:InvokeWorkflowFile.Arguments>
+                                  </ui:InvokeWorkflowFile>
+                                </Sequence>
+                              </ActivityAction>
+                            </ui:RetryScope.ActivityBody>
+                            <ui:RetryScope.Condition>
+                              <ActivityFunc x:TypeArguments="x:Boolean" />
+                            </ui:RetryScope.Condition>
+                          </ui:RetryScope>
+                        </TryCatch.Try>
+                        <TryCatch.Catches>
+                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="496,21" sap2010:WorkflowViewState.IdRef="Catch`1_12">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ActivityAction x:TypeArguments="s:Exception">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                              </ActivityAction.Argument>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,143" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[CurrentFile.Name &amp; &quot; got fcked in formatting...&quot;]" />
+                            </ActivityAction>
+                          </Catch>
+                        </TryCatch.Catches>
+                      </TryCatch>
+                      <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Date" DataTable="[dtInput]" DefaultValue="[strDate]" DisplayName="Date - Add Data Column" sap:VirtualizedContainerService.HintSize="530,186" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_8" />
+                      <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="WipeNr" DataTable="[dtInput]" DefaultValue="[in_strWipeNr]" DisplayName="wipe nr - Add Data Column" sap:VirtualizedContainerService.HintSize="530,186" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_9" />
+                      <If Condition="[file.Exists(&quot;Data\Output\&quot; &amp; CurrentFile.Name)]" DisplayName="append or write - If" sap:VirtualizedContainerService.HintSize="530,645" sap2010:WorkflowViewState.IdRef="If_5">
+                        <If.Then>
+                          <Sequence sap:VirtualizedContainerService.HintSize="476,221" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:AppendCsvFile DataTable="[dtInput]" Delimitator="Comma" DisplayName="Append to CSV" FilePath="[&quot;Data\Output\&quot; &amp; CurrentFile.Name]" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="AppendCsvFile_4" />
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <Sequence sap:VirtualizedContainerService.HintSize="476,242" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:WriteCsvFile AddHeaders="True" DataTable="[dtInput]" Delimitator="Comma" DisplayName="Write CSV" FilePath="[&quot;Data\Output\&quot; &amp; CurrentFile.Name]" sap:VirtualizedContainerService.HintSize="434,154" sap2010:WorkflowViewState.IdRef="WriteCsvFile_3" ShouldQuote="True" />
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                    <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="572,80" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[CurrentFile.FullName]" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachFileX.Body>
+            </ui:ForEachFileX>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="b792f6fba0f9ba51f1ea470ecb4ae68b.jpg" Title="Simpsquad Reports | Warcraft Logs" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

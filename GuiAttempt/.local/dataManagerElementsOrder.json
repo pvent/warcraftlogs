@@ -1,0 +1,200 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/Process.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "browser&Sequence_1",
+        "ExtractDataTable&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_TransactionItem",
+        "in_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/GetReports.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "browser&Sequence_1",
+        "strUrl&Sequence_2",
+        "intWipeCounter&Sequence_2",
+        "strWipeCount&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_browser",
+        "in_strReportUrl"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/GetDataFromReport.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dtInput&Sequence_30",
+        "strLog&Sequence_30",
+        "strTempFullPath&Sequence_1",
+        "arrTablesNames&Sequence_1",
+        "idx&Sequence_2",
+        "dtDriftingEmbers&Sequence_1",
+        "dtHurtlingEvents&Sequence_1",
+        "dtDpsPots&Sequence_1",
+        "dtHealingPotsHealing&Sequence_1",
+        "dtHealingPotsCasts&Sequence_1",
+        "dtDefensives&Sequence_1",
+        "dtBreaths&Sequence_1",
+        "dtHealing&Sequence_1",
+        "dtDmgTkn&Sequence_1",
+        "dateDate&Sequence_2",
+        "strDate&Sequence_2",
+        "dtTemp&Sequence_1",
+        "dtDPS&Sequence_1",
+        "strWipeCount&Sequence_2",
+        "intWipeCounter&Sequence_2",
+        "strUrl&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_strWipeNr",
+        "io_browser"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/FormatTable.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strXamlName&Sequence_5",
+        "strXaml&Sequence_5",
+        "arrSchema&Sequence_5",
+        "strOutputSchema&Sequence_1",
+        "dtTemp&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "io_dtLogs"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/AddParseColAsFirst.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "io_dtInputTable"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Test.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strLog&Sequence_5",
+        "dtInput&Sequence_5",
+        "dtDPS&Sequence_4",
+        "strTempFullPath&Sequence_1",
+        "ExtractDataTable&Sequence_3",
+        "dtDefensives&Sequence_3",
+        "dtDmgTkn&Sequence_3",
+        "strTest&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/HurtlingTableFormating.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strBlamePerson&Sequence_23",
+        "strNick&Sequence_18",
+        "strText&Sequence_18",
+        "boolSource&Sequence_18"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "io_dtHurtlingEvents"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/DownloadReportCsvFile.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "in_browser",
+        "in_strReportLocation"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "TransactionItem&StateMachine_1",
+        "SystemException&StateMachine_1",
+        "BusinessException&StateMachine_1",
+        "TransactionNumber&StateMachine_1",
+        "Config&StateMachine_1",
+        "RetryNumber&StateMachine_1",
+        "TransactionField2&StateMachine_1",
+        "TransactionField1&StateMachine_1",
+        "TransactionID&StateMachine_1",
+        "dt_TransactionData&StateMachine_1",
+        "ConsecutiveSystemExceptions&StateMachine_1",
+        "ShouldStop&Sequence_25"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_OrchestratorQueueName",
+        "in_OrchestratorQueueFolder"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/linqTemp.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dtTemp&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "io_dtLogs"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/linqTemp_1.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dtTemp&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "io_dtLogs"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/API/Authenticate.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
