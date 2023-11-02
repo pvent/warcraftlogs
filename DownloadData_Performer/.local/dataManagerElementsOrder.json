@@ -80,6 +80,122 @@
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
+    },
+    {
+      "Path": "Test.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "in_Config&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Authenticate.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strName&Sequence_1",
+        "sstrPass&Sequence_1",
+        "strContent&Sequence_1",
+        "intStatus&Sequence_1",
+        "jContent&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "io_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Test1.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strTest&Sequence_1",
+        "strId&Sequence_1",
+        "strCode&Sequence_1",
+        "qiData&Sequence_1",
+        "items&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/GetFights.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strContent&Sequence_1",
+        "intStatus&Sequence_1",
+        "jContent&Sequence_1",
+        "strQueryBody&Sequence_1",
+        "intIdx&Sequence_1",
+        "strReportCode&Sequence_3"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_intPageLimit",
+        "in_intPage",
+        "io_collTupleFights",
+        "in_intEncounterID",
+        "in_intEncounterDifficulty"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/EasyRequest.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strContent&Sequence_1",
+        "intStatus&Sequence_1",
+        "jContent&Sequence_1",
+        "strQueryBody&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "out_intLastPage",
+        "out_intCurrentPage",
+        "in_intPageLimit"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/GetCommonData.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strContent&Sequence_1",
+        "intStatus&Sequence_1",
+        "jContent&Sequence_1",
+        "strQueryBody&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "out_intLastPage",
+        "out_intCurrentPage",
+        "in_intPageLimit"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/GetPageCounter.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strContent&Sequence_1",
+        "intStatus&Sequence_1",
+        "jContent&Sequence_1",
+        "strQueryBody&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "out_intLastPage",
+        "out_intCurrentPage",
+        "in_intPageLimit"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
     }
   ]
 }

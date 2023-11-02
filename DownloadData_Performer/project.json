@@ -1,12 +1,12 @@
 {
-  "name": "BackgroundREF",
+  "name": "WarcraftLogs_Performer",
   "projectId": "36a80a06-2bd5-4297-ba30-3e316949d626",
   "description": "Backgrounnd Robotic Enterprise Framework",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.22.2]",
     "UiPath.System.Activities": "[23.10.1]",
-    "UiPath.WebAPI.Activities": "[1.18.0]"
+    "UiPath.WebAPI.Activities": "[1.16.2]"
   },
   "webServices": [],
   "entitiesStores": [],

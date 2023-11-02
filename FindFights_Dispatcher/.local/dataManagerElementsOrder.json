@@ -26,6 +26,9 @@
         "ShouldStop&Sequence_25"
       ],
       "ArgumentsSectionElementsOrder": [
+        "in_intPageLimit",
+        "in_intEncounterDifficulty",
+        "in_intEncounterID",
         "in_OrchestratorQueueName",
         "in_OrchestratorQueueFolder"
       ],
@@ -74,12 +77,15 @@
       "Path": "Framework/Process.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "collFights&Sequence_2",
-        "intPageLimit&Sequence_1",
+        "intIdx&Sequence_1",
+        "collTupleFights&Sequence_1",
         "intCurrentPage&Sequence_1",
         "intLastPage&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
+        "in_intEncounterDifficulty",
+        "in_intEncounterID",
+        "in_intPageLimit",
         "in_TransactionItem",
         "in_Config"
       ],
@@ -114,7 +120,9 @@
         "jContent&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
-        "io_collFights",
+        "in_intEncounterDifficulty",
+        "in_intEncounterID",
+        "io_collTupleFights",
         "in_intPage",
         "in_intPageLimit",
         "in_Config"
