@@ -1,0 +1,69 @@
+﻿name,id,guid,type,icon,itemLevel,total,abilitiesName,abilitiesTotal,abilitiesType,encounterId,encounterName,encounterDifficulty,encounterKill,encounterDate
+Lefox,129,175528845,Shaman,Shaman-Restoration,444,10,Earth Shield,8,8,2685,2685,5,False,04/10/23
+Lefox,129,175528845,Shaman,Shaman-Restoration,444,10,Astral Shift,2,1,2685,2685,5,False,04/10/23
+Pepko,93,178016999,Paladin,Paladin-Retribution,444,5,Shield of Vengeance,2,2,2685,2685,5,False,04/10/23
+Pepko,93,178016999,Paladin,Paladin-Retribution,444,5,Blessing of Protection,1,2,2685,2685,5,False,04/10/23
+Pepko,93,178016999,Paladin,Paladin-Retribution,444,5,Refreshing Healing Potion,1,16,2685,2685,5,False,04/10/23
+Pepko,93,178016999,Paladin,Paladin-Retribution,444,5,Divine Protection,1,2,2685,2685,5,False,04/10/23
+Nugera,92,181593749,Evoker,Evoker-Augmentation,445,8,Renewing Blaze,3,4,2685,2685,5,False,04/10/23
+Nugera,92,181593749,Evoker,Evoker-Augmentation,445,8,Obsidian Scales,3,12,2685,2685,5,False,04/10/23
+Nugera,92,181593749,Evoker,Evoker-Augmentation,445,8,Healthstone,1,1,2685,2685,5,False,04/10/23
+Nugera,92,181593749,Evoker,Evoker-Augmentation,445,8,Refreshing Healing Potion,1,16,2685,2685,5,False,04/10/23
+Owsianko,100,180528313,DeathKnight,DeathKnight-Unholy,445,8,Anti-Magic Shell,4,32,2685,2685,5,False,04/10/23
+Owsianko,100,180528313,DeathKnight,DeathKnight-Unholy,445,8,Healthstone,1,1,2685,2685,5,False,04/10/23
+Owsianko,100,180528313,DeathKnight,DeathKnight-Unholy,445,8,Refreshing Healing Potion,1,16,2685,2685,5,False,04/10/23
+Owsianko,100,180528313,DeathKnight,DeathKnight-Unholy,445,8,Icebound Fortitude,1,1,2685,2685,5,False,04/10/23
+Owsianko,100,180528313,DeathKnight,DeathKnight-Unholy,445,8,Lichborne,1,32,2685,2685,5,False,04/10/23
+Peanutmage,131,180616658,Mage,Mage-Fire,445,10,Blazing Barrier,3,4,2685,2685,5,False,04/10/23
+Peanutmage,131,180616658,Mage,Mage-Fire,445,10,Greater Invisibility,2,64,2685,2685,5,False,04/10/23
+Peanutmage,131,180616658,Mage,Mage-Fire,445,10,Mirror Image,2,64,2685,2685,5,False,04/10/23
+Peanutmage,131,180616658,Mage,Mage-Fire,445,10,Alter Time,1,64,2685,2685,5,False,04/10/23
+Peanutmage,131,180616658,Mage,Mage-Fire,445,10,Healthstone,1,1,2685,2685,5,False,04/10/23
+Meeow,95,143983765,Druid,Druid-Feral,447,7,Renewal,2,8,2685,2685,5,False,04/10/23
+Meeow,95,143983765,Druid,Druid-Feral,447,7,Barkskin,2,8,2685,2685,5,False,04/10/23
+Meeow,95,143983765,Druid,Druid-Feral,447,7,Healthstone,1,1,2685,2685,5,False,04/10/23
+Meeow,95,143983765,Druid,Druid-Feral,447,7,Refreshing Healing Potion,1,16,2685,2685,5,False,04/10/23
+Meeow,95,143983765,Druid,Druid-Feral,447,7,Survival Instincts,1,1,2685,2685,5,False,04/10/23
+Killeen,102,181540927,Evoker,Evoker-Devastation,446,8,Obsidian Scales,4,12,2685,2685,5,False,04/10/23
+Killeen,102,181540927,Evoker,Evoker-Devastation,446,8,Renewing Blaze,2,4,2685,2685,5,False,04/10/23
+Killeen,102,181540927,Evoker,Evoker-Devastation,446,8,Healthstone,1,1,2685,2685,5,False,04/10/23
+Killeen,102,181540927,Evoker,Evoker-Devastation,446,8,Refreshing Healing Potion,1,16,2685,2685,5,False,04/10/23
+Shlauffu,104,182304349,Priest,Priest-Shadow,446,14,Fade,9,32,2685,2685,5,False,04/10/23
+Shlauffu,104,182304349,Priest,Priest-Shadow,446,14,Desperate Prayer,3,2,2685,2685,5,False,04/10/23
+Shlauffu,104,182304349,Priest,Priest-Shadow,446,14,Healthstone,1,1,2685,2685,5,False,04/10/23
+Shlauffu,104,182304349,Priest,Priest-Shadow,446,14,Refreshing Healing Potion,1,16,2685,2685,5,False,04/10/23
+Cebulaczyna,135,121577266,Hunter,Hunter-Marksmanship,445,5,Exhilaration,2,1,2685,2685,5,False,04/10/23
+Cebulaczyna,135,121577266,Hunter,Hunter-Marksmanship,445,5,Survival of the Fittest,1,1,2685,2685,5,False,04/10/23
+Cebulaczyna,135,121577266,Hunter,Hunter-Marksmanship,445,5,Healthstone,1,1,2685,2685,5,False,04/10/23
+Cebulaczyna,135,121577266,Hunter,Hunter-Marksmanship,445,5,Refreshing Healing Potion,1,16,2685,2685,5,False,04/10/23
+Arathil,85,150634218,Warlock,Warlock-Affliction,446,6,Dark Pact,3,1,2685,2685,5,False,04/10/23
+Arathil,85,150634218,Warlock,Warlock-Affliction,446,6,Unending Resolve,2,32,2685,2685,5,False,04/10/23
+Arathil,85,150634218,Warlock,Warlock-Affliction,446,6,Refreshing Healing Potion,1,16,2685,2685,5,False,04/10/23
+Prohus,91,181500240,Evoker,Evoker-Preservation,446,4,Renewing Blaze,2,4,2685,2685,5,False,04/10/23
+Prohus,91,181500240,Evoker,Evoker-Preservation,446,4,Refreshing Healing Potion,1,16,2685,2685,5,False,04/10/23
+Prohus,91,181500240,Evoker,Evoker-Preservation,446,4,Obsidian Scales,1,12,2685,2685,5,False,04/10/23
+Catherinee,105,180636202,Monk,Monk-Windwalker,444,5,Touch of Karma,2,1,2685,2685,5,False,04/10/23
+Catherinee,105,180636202,Monk,Monk-Windwalker,444,5,Dampen Harm,1,1,2685,2685,5,False,04/10/23
+Catherinee,105,180636202,Monk,Monk-Windwalker,444,5,Healthstone,1,1,2685,2685,5,False,04/10/23
+Catherinee,105,180636202,Monk,Monk-Windwalker,444,5,Diffuse Magic,1,8,2685,2685,5,False,04/10/23
+Kryxoria,133,182687721,Priest,Priest-Holy,445,7,Fade,4,32,2685,2685,5,False,04/10/23
+Kryxoria,133,182687721,Priest,Priest-Holy,445,7,Desperate Prayer,3,2,2685,2685,5,False,04/10/23
+Grubi,94,180755381,Rogue,Rogue-Subtlety,445,8,Crimson Vial,5,8,2685,2685,5,False,04/10/23
+Grubi,94,180755381,Rogue,Rogue-Subtlety,445,8,Feint,1,1,2685,2685,5,False,04/10/23
+Grubi,94,180755381,Rogue,Rogue-Subtlety,445,8,Refreshing Healing Potion,1,16,2685,2685,5,False,04/10/23
+Grubi,94,180755381,Rogue,Rogue-Subtlety,445,8,Cloak of Shadows,1,1,2685,2685,5,False,04/10/23
+Màmbà,99,183169964,Paladin,Paladin-Holy,446,2,Lay on Hands,1,2,2685,2685,5,False,04/10/23
+Màmbà,99,183169964,Paladin,Paladin-Holy,446,2,Divine Shield,1,2,2685,2685,5,False,04/10/23
+Bärman,88,181432362,Warrior,Warrior-Fury,444,9,Spell Reflection,4,1,2685,2685,5,False,04/10/23
+Bärman,88,181432362,Warrior,Warrior-Fury,444,9,Impending Victory,2,1,2685,2685,5,False,04/10/23
+Bärman,88,181432362,Warrior,Warrior-Fury,444,9,Enraged Regeneration,1,1,2685,2685,5,False,04/10/23
+Bärman,88,181432362,Warrior,Warrior-Fury,444,9,Healthstone,1,1,2685,2685,5,False,04/10/23
+Bärman,88,181432362,Warrior,Warrior-Fury,444,9,Refreshing Healing Potion,1,16,2685,2685,5,False,04/10/23
+Qquo,103,165177271,Priest,Priest-Shadow,445,8,Desperate Prayer,3,2,2685,2685,5,False,04/10/23
+Qquo,103,165177271,Priest,Priest-Shadow,445,8,Fade,3,32,2685,2685,5,False,04/10/23
+Qquo,103,165177271,Priest,Priest-Shadow,445,8,Healthstone,1,1,2685,2685,5,False,04/10/23
+Qquo,103,165177271,Priest,Priest-Shadow,445,8,Refreshing Healing Potion,1,16,2685,2685,5,False,04/10/23
+Wajpcieto,96,162459010,Shaman,Shaman-Enhancement,445,6,Astral Shift,3,1,2685,2685,5,False,04/10/23
+Wajpcieto,96,162459010,Shaman,Shaman-Enhancement,445,6,Healthstone,1,1,2685,2685,5,False,04/10/23
+Wajpcieto,96,162459010,Shaman,Shaman-Enhancement,445,6,Refreshing Healing Potion,1,16,2685,2685,5,False,04/10/23
+Wajpcieto,96,162459010,Shaman,Shaman-Enhancement,445,6,Earth Elemental,1,8,2685,2685,5,False,04/10/23

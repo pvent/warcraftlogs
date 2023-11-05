@@ -85,6 +85,8 @@
       "Path": "Test.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "strId&Sequence_1",
+        "strCode&Sequence_1",
         "in_Config&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [],
@@ -193,6 +195,66 @@
         "out_intLastPage",
         "out_intCurrentPage",
         "in_intPageLimit"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/GetSarkhData.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "intStatus&Sequence_1",
+        "jContent&Sequence_1",
+        "strQueryBody&Sequence_1",
+        "intIdx&Sequence_1",
+        "strLastContent&Sequence_1",
+        "strContent&Sequence_1",
+        "strDate&Sequence_1",
+        "dtDmgDone&Sequence_1",
+        "dtHealingDone&Sequence_1",
+        "dtDeathEvents&Sequence_1",
+        "dtHealingPotsCasts&Sequence_1",
+        "dtHealingPotsHealing&Sequence_1",
+        "dtDpsPotsCasts&Sequence_1",
+        "arrDtNames&Sequence_1",
+        "dtDefensives&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_strId",
+        "in_strCode"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/formatTableUploadToBucket.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strItemName&Sequence_14"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_strId",
+        "in_strCode",
+        "in_dtData"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/getEncounterData.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strContent&Sequence_1",
+        "intStatus&Sequence_1",
+        "jContent&Sequence_1",
+        "strQueryBody&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_strCode",
+        "in_strId",
+        "io_Config"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
