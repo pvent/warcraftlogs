@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GetFights" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GetFights" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_strId" Type="InArgument(x:String)" />
@@ -128,43 +128,65 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Run graphql post request" sap:VirtualizedContainerService.HintSize="450,869" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Int32" Name="intStatus" />
-      <Variable x:TypeArguments="njl:JObject" Name="jContent" />
-      <Variable x:TypeArguments="x:String" Default="[&quot;{reportData{report(code:\&quot;&quot;&quot; &amp; in_strCode &amp; &quot;\&quot;&quot;){startTime,summary:table(dataType:Summary,fightIDs:4),defensives:table(dataType:Casts,fightIDs:&quot; &amp; in_strId &amp; &quot;,filterExpression:\&quot;&quot;ability.id IN (49998,48707,48743,49039,48792,198589,196555,5487,22842,22812,108238,319454,61336,363916,374348,109304,272679,264735,18265,342245,55342,110959,45438,235450,235313,11426,235219,122783,122278,22630,122470,498,403876,1022,642,633,184662,586,19236,47585,1966,185311,5277,31224,974,108271,198103,234153,6789,108416,104773,34428,386208,202168,23920,383762,190456,118038,184364,6262,370511) AND source.role!='tank'\&quot;&quot;),healingCasts:table(dataType:Casts,fightIDs:&quot; &amp; in_strId &amp; &quot;,filterExpression:\&quot;&quot;ability.id IN(6262,370511)\&quot;&quot;),healingDone:table(dataType:Healing,fightIDs:&quot; &amp; in_strId &amp; &quot;,filterExpression:\&quot;&quot;ability.id IN(6262,370511)\&quot;&quot;),dpsPotionCasts:table(dataType:Casts,fightIDs:&quot; &amp; in_strId &amp; &quot;,filterExpression:\&quot;&quot;ability.id IN(371028)\&quot;&quot;)}}}&quot;]" Name="strQueryBody" />
       <Variable x:TypeArguments="x:Int32" Name="intIdx" />
-      <Variable x:TypeArguments="x:String" Name="strLastContent" />
-      <Variable x:TypeArguments="x:String" Name="strContent" />
-      <Variable x:TypeArguments="x:String" Name="strDate" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtDmgDone" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtHealingDone" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtDeathEvents" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtHealingPotsCasts" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtHealingPotsHealing" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtDpsPotsCasts" />
-      <Variable x:TypeArguments="s:String[]" Default="[{&quot;dtDmgDone&quot;, &quot;dtHealingDone&quot;, &quot;dtDeathEvents&quot;, &quot;dtHealingPotsCasts&quot;, &quot;dtHealingPotsHealing&quot;, &quot;dtDpsPotsCasts&quot;}]" Name="arrDtNames" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtDefensives" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtHurtlingBarrage" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtSearingBreath" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtDriftingEmbers" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\GetSarkhData_SearingBreath.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Process\GetSarkhData_SearingBreath.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\GetSarkhData_HurtlingBarrage.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Process\GetSarkhData_HurtlingBarrage.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strId">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strId" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strCode">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strCode" />
+        </InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtHurtlingBarrage">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtHurtlingBarrage" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\GetSarkhData_HurtlingBarrage.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Process\GetSarkhData_HurtlingBarrage.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\GetSarkhData_SearingBreath.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Process\GetSarkhData_SearingBreath.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strId">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strId" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strCode">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strCode" />
+        </InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtSearingBreath">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtSearingBreath" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\GetSarkhData_DriftingEmbers.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Process\GetSarkhData_DriftingEmbers.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\GetSarkhData_DriftingEmbers.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Process\GetSarkhData_DriftingEmbers.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strId">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strId" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strCode">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strCode" />
+        </InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtDriftingEmbers">
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtDriftingEmbers" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:ForEach x:TypeArguments="sd:DataTable" CurrentIndex="[intIdx]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="388,299" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[{dtDmgDone, dtHealingDone, dtDeathEvents, dtHealingPotsCasts, dtHealingPotsHealing, dtDpsPotsCasts, dtDefensives}]">
+    <ui:ForEach x:TypeArguments="sd:DataTable" CurrentIndex="[intIdx]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="388,299" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[{dtDriftingEmbers, dtSearingBreath, dtHurtlingBarrage}]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="sd:DataTable">
           <ActivityAction.Argument>

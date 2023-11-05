@@ -3,6 +3,7 @@
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_strId" Type="InArgument(x:String)" />
     <x:Property Name="in_strCode" Type="InArgument(x:String)" />
+    <x:Property Name="out_dtHurtlingBarrage" Type="OutArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -126,7 +127,7 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Run graphql post request" sap:VirtualizedContainerService.HintSize="472,1117" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Run graphql post request" sap:VirtualizedContainerService.HintSize="472,987" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="intStatus" />
       <Variable x:TypeArguments="njl:JObject" Name="jContent" />
@@ -138,7 +139,6 @@
       <Variable x:TypeArguments="x:Int32" Name="intIdx" />
       <Variable x:TypeArguments="x:String" Name="strLastContent" />
       <Variable x:TypeArguments="x:String" Name="strContent" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtHurtlingBarrage" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -190,7 +190,7 @@
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\createTableFromJson_Events_1.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="410,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Process\createTableFromJson_Events_1.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtOutputData">
-          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtHurtlingBarrage" />
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="out_dtHurtlingBarrage" />
         </OutArgument>
         <InArgument x:TypeArguments="njl:JToken" x:Key="in_jContent">
           <VisualBasicValue x:TypeArguments="njl:JToken" ExpressionText="jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;report&quot;)(&quot;events&quot;)(&quot;data&quot;)" />
@@ -203,10 +203,9 @@
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\HurtlingTableFormating.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="410,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Process\HurtlingTableFormating.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtHurtlingEvents">
-          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtHurtlingBarrage" />
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="out_dtHurtlingBarrage" />
         </InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="410,90" sap2010:WorkflowViewState.IdRef="WriteLine_1" />
   </Sequence>
 </Activity>

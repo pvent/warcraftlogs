@@ -1,8 +1,9 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GetFights" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="DriftingEmbers" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_strId" Type="InArgument(x:String)" />
     <x:Property Name="in_strCode" Type="InArgument(x:String)" />
+    <x:Property Name="out_dtDriftingEmbers" Type="OutArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -135,19 +136,7 @@
           <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;{reportData{report(code:\&quot;&quot;&quot; &amp; in_strCode &amp; &quot;\&quot;&quot;){events(dataType:Debuffs,fightIDs:&quot; &amp; in_strId &amp; &quot;,filterExpression:\&quot;&quot;ability.name = 'Drifting Embers' and timestamp &lt; 78000\&quot;&quot;,useActorIDs:false){nextPageTimestamp,data}}}}&quot;" />
         </Variable.Default>
       </Variable>
-      <Variable x:TypeArguments="x:Int32" Name="intIdx" />
-      <Variable x:TypeArguments="x:String" Name="strLastContent" />
       <Variable x:TypeArguments="x:String" Name="strContent" />
-      <Variable x:TypeArguments="x:String" Name="strDate" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtDmgDone" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtHealingDone" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtDeathEvents" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtHealingPotsCasts" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtHealingPotsHealing" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtDpsPotsCasts" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtDefensives" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtSearingBreath" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtDriftingEmbers" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -199,7 +188,7 @@
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\createTableFromJson_Events_1.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="410,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Process\createTableFromJson_Events_1.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtOutputData">
-          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtDriftingEmbers" />
+          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="out_dtDriftingEmbers" />
         </OutArgument>
         <InArgument x:TypeArguments="njl:JToken" x:Key="in_jContent">
           <VisualBasicValue x:TypeArguments="njl:JToken" ExpressionText="jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;report&quot;)(&quot;events&quot;)(&quot;data&quot;)" />
