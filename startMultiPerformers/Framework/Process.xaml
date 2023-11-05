@@ -110,7 +110,9 @@
         </ActivityAction.Argument>
         <ui:InvokeProcess ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Process" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="InvokeProcess_1" ProcessName="[in_strProcessName]">
           <ui:InvokeProcess.Arguments>
-            <scg:Dictionary x:TypeArguments="x:String, Argument" />
+            <InArgument x:TypeArguments="x:String" x:Key="in_strMultiPerformer">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="item.tostring" />
+            </InArgument>
           </ui:InvokeProcess.Arguments>
         </ui:InvokeProcess>
       </ActivityAction>

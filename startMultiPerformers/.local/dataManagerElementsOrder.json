@@ -26,6 +26,8 @@
         "ShouldStop&Sequence_25"
       ],
       "ArgumentsSectionElementsOrder": [
+        "in_intRunInstances",
+        "in_strProcessName",
         "in_OrchestratorQueueName",
         "in_OrchestratorQueueFolder"
       ],
@@ -75,9 +77,19 @@
       "SortBy": 0,
       "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
+        "in_intRunInstances",
+        "in_strProcessName",
         "in_TransactionItem",
         "in_Config"
       ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "UnstuckQueueItems.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     }
