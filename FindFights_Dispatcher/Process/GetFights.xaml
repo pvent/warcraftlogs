@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1692,1566</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>759,1741</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetFights_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -115,16 +115,12 @@
       <AssemblyReference>System.Runtime.CompilerServices.Unsafe</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetFights" sap:VirtualizedContainerService.HintSize="648,1501" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetFights" sap:VirtualizedContainerService.HintSize="648,1676" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strContent" />
       <Variable x:TypeArguments="x:Int32" Name="intStatus" />
       <Variable x:TypeArguments="njl:JObject" Name="jContent" />
-      <Variable x:TypeArguments="x:String" Name="strQueryBody">
-        <Variable.Default>
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;{reportData{reports(guildID:661151,page:&quot; &amp; in_intPage.ToString &amp; &quot;,  limit:&quot; &amp; in_intPageLimit.ToString &amp; &quot;){data{code,fights(encounterID:&quot; &amp; in_intEncounterID.ToString &amp; &quot;,difficulty:&quot; &amp; in_intEncounterDifficulty.ToString &amp;&quot;){id,difficulty,name},startTime,endTime}}}} #5 = Mythic 2685 = Sarkareth&quot;" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="[&quot;{reportData{reports(guildID:661151,page:&quot; &amp; in_intPage.ToString &amp; &quot;,  limit:&quot; &amp; in_intPageLimit.ToString &amp; &quot;){data{code,fights(encounterID:&quot; &amp; in_intEncounterID.ToString &amp; &quot;,difficulty:&quot; &amp; in_intEncounterDifficulty.ToString &amp;&quot;){id,difficulty,name},startTime,endTime}}}} #5 = Mythic 2685 = Sarkareth&quot;]" Name="strQueryBody" />
       <Variable x:TypeArguments="x:Int32" Name="intIdx" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -132,25 +128,34 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[&quot;{&quot;&quot;query&quot;&quot;:&quot;&quot;&quot; &amp; strQueryBody &amp; &quot;&quot;&quot;}&quot;]" BodyFormat="application/json" DisplayName="Get Fight  - HTTP Request" EnableSSLVerification="True" EndPoint="[in_Config(&quot;BaseUrl&quot;).tostring &amp; in_Config(&quot;RequestEndPoint&quot;).tostring]" sap:VirtualizedContainerService.HintSize="586,70" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" Result="[strContent]" StatusCode="[intStatus]" TimeoutMS="6000">
-      <ui:HttpClient.Attachments>
-        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-      </ui:HttpClient.Attachments>
-      <ui:HttpClient.Cookies>
-        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-      </ui:HttpClient.Cookies>
-      <ui:HttpClient.Headers>
-        <InArgument x:TypeArguments="x:String" x:Key="Authorization">["Bearer " &amp; in_Config("Token").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="Content-Type">application/json</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="Accept">application/json</InArgument>
-      </ui:HttpClient.Headers>
-      <ui:HttpClient.Parameters>
-        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-      </ui:HttpClient.Parameters>
-      <ui:HttpClient.UrlSegments>
-        <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-      </ui:HttpClient.UrlSegments>
-    </ui:HttpClient>
+    <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="586,245" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:05">
+      <ui:RetryScope.ActivityBody>
+        <ActivityAction>
+          <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[&quot;{&quot;&quot;query&quot;&quot;:&quot;&quot;&quot; &amp; strQueryBody &amp; &quot;&quot;&quot;}&quot;]" BodyFormat="application/json" DisplayName="Get Fight  - HTTP Request" EnableSSLVerification="True" EndPoint="[in_Config(&quot;BaseUrl&quot;).tostring &amp; in_Config(&quot;RequestEndPoint&quot;).tostring]" sap:VirtualizedContainerService.HintSize="204,70" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" Result="[strContent]" StatusCode="[intStatus]" TimeoutMS="30000">
+            <ui:HttpClient.Attachments>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </ui:HttpClient.Attachments>
+            <ui:HttpClient.Cookies>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </ui:HttpClient.Cookies>
+            <ui:HttpClient.Headers>
+              <InArgument x:TypeArguments="x:String" x:Key="Authorization">["Bearer " &amp; in_Config("Token").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Content-Type">application/json</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Accept">application/json</InArgument>
+            </ui:HttpClient.Headers>
+            <ui:HttpClient.Parameters>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </ui:HttpClient.Parameters>
+            <ui:HttpClient.UrlSegments>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+            </ui:HttpClient.UrlSegments>
+          </ui:HttpClient>
+        </ActivityAction>
+      </ui:RetryScope.ActivityBody>
+      <ui:RetryScope.Condition>
+        <ActivityFunc x:TypeArguments="x:Boolean" />
+      </ui:RetryScope.Condition>
+    </ui:RetryScope>
     <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="586,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jContent]" JsonString="[strContent]" />
     <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="[intIdx]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="586,1180" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)]">
       <ui:ForEach.Body>

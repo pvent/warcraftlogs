@@ -1,0 +1,343 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "TransactionItem&StateMachine_1",
+        "SystemException&StateMachine_1",
+        "BusinessException&StateMachine_1",
+        "TransactionNumber&StateMachine_1",
+        "Config&StateMachine_1",
+        "RetryNumber&StateMachine_1",
+        "TransactionField2&StateMachine_1",
+        "TransactionField1&StateMachine_1",
+        "TransactionID&StateMachine_1",
+        "dt_TransactionData&StateMachine_1",
+        "ConsecutiveSystemExceptions&StateMachine_1",
+        "ShouldStop&Sequence_25"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_strMultiPerformer",
+        "in_OrchestratorQueueName",
+        "in_OrchestratorQueueFolder"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/SetTransactionStatus.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "QueueRetry&Sequence_17",
+        "ScreenshotPath&Sequence_17"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_BusinessException",
+        "in_TransactionField1",
+        "in_TransactionField2",
+        "in_TransactionID",
+        "in_SystemException",
+        "in_Config",
+        "in_TransactionItem",
+        "io_RetryNumber",
+        "io_TransactionNumber",
+        "io_ConsecutiveSystemExceptions"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/GetTransactionData.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "in_TransactionNumber",
+        "in_Config",
+        "out_TransactionItem",
+        "out_TransactionField1",
+        "out_TransactionField2",
+        "out_TransactionID",
+        "io_dt_TransactionData"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/Process.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strCode&Sequence_1",
+        "strId&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_TransactionItem",
+        "in_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/Authenticate.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strName&Sequence_1",
+        "sstrPass&Sequence_1",
+        "strContent&Sequence_1",
+        "intStatus&Sequence_1",
+        "jContent&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "io_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/GetCommonData.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "intIdx&Sequence_1",
+        "strLastContent&Sequence_1",
+        "strDate&Sequence_1",
+        "dtDmgDone&Sequence_1",
+        "dtHealingDone&Sequence_1",
+        "dtDeathEvents&Sequence_1",
+        "dtHealingPotsCasts&Sequence_1",
+        "dtHealingPotsHealing&Sequence_1",
+        "dtDpsPotsCasts&Sequence_1",
+        "arrDtNames&Sequence_1",
+        "dtDefensives&Sequence_1",
+        "strItemName&Sequence_13",
+        "strContent&Sequence_1",
+        "intStatus&Sequence_1",
+        "jContent&Sequence_1",
+        "strQueryBody&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_strId",
+        "in_strCode",
+        "in_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/GetSarkhData.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dtDriftingEmbers&Sequence_1",
+        "dtSearingBreath&Sequence_1",
+        "dtHurtlingBarrage&Sequence_1",
+        "intIdx&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_strId",
+        "in_strCode"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/formatTableUploadToBucket.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strItemName&Sequence_14"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_strId",
+        "in_strCode",
+        "in_dtData"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/getEncounterData.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strContent&Sequence_1",
+        "intStatus&Sequence_1",
+        "jContent&Sequence_1",
+        "strQueryBody&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_strCode",
+        "in_strId",
+        "io_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/GetSarkhData_SearingBreath.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "intStatus&Sequence_1",
+        "jContent&Sequence_1",
+        "strQueryBody&Sequence_1",
+        "strContent&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_dtSearingBreath",
+        "in_Config",
+        "in_strId",
+        "in_strCode"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/createTableFromJson_Casts.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "intIdx&Sequence_13",
+        "intAbilitiesIndx&Sequence_12"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_dtOutputData",
+        "in_jContent",
+        "in_strTableName"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/createTableFromJson_Events_1.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "intIdx&Sequence_13",
+        "intAbilitiesIndx&Sequence_12"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_dtOutputData",
+        "in_jContent",
+        "in_strTableName"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/GetSarkhData_HurtlingBarrage.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "intStatus&Sequence_1",
+        "jContent&Sequence_1",
+        "strQueryBody&Sequence_1",
+        "intIdx&Sequence_1",
+        "strLastContent&Sequence_1",
+        "strContent&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_dtHurtlingBarrage",
+        "in_Config",
+        "in_strId",
+        "in_strCode"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/HurtlingTableFormating.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strBlamePerson&Sequence_23",
+        "strText&Sequence_18",
+        "boolSource&Sequence_18",
+        "strNick&Sequence_18"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "io_dtHurtlingEvents"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Process/GetSarkhData_DriftingEmbers.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "intStatus&Sequence_1",
+        "jContent&Sequence_1",
+        "strQueryBody&Sequence_1",
+        "strContent&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_dtDriftingEmbers",
+        "in_Config",
+        "in_strId",
+        "in_strCode"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/InitAllApplications.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "io_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/InitAllSettings.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dt_SettingsAndConstants&Sequence_5",
+        "dt_Assets&Sequence_6",
+        "AssetValue&Sequence_11"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_ConfigFile",
+        "in_ConfigSheets",
+        "out_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "CombineStorageCsvs.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "listStorageItems&Sequence_7",
+        "strCurFile&Sequence_7",
+        "strOutputFileName&Sequence_7",
+        "dtOtuputFile&Sequence_8",
+        "dtCurrentTable&Sequence_9",
+        "strOutputFileName&Sequence_2",
+        "dtCurrentTable&Sequence_3",
+        "dtOtuputFile&Sequence_6",
+        "strCurFile&Sequence_2",
+        "listStorageItems&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/RetryCurrentTransaction.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "io_RetryNumber",
+        "io_TransactionNumber",
+        "in_SystemException",
+        "in_QueueRetry"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}

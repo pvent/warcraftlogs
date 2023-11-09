@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1462,1537</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1462,1534</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetFights_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -104,7 +104,7 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="getEncounterData" sap:VirtualizedContainerService.HintSize="496,1472" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="getEncounterData" sap:VirtualizedContainerService.HintSize="496,1469" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strContent" />
       <Variable x:TypeArguments="x:Int32" Name="intStatus" />
@@ -117,7 +117,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;started: getEncounterData&quot;]" />
-    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[&quot;{&quot;&quot;query&quot;&quot;:&quot;&quot;&quot; &amp; strQueryBody &amp; &quot;&quot;&quot;}&quot;]" BodyFormat="application/json" DisplayName="Page countert  - HTTP Request" EnableSSLVerification="True" EndPoint="[io_Config(&quot;BaseUrl&quot;).tostring &amp; io_Config(&quot;RequestEndPoint&quot;).tostring]" sap:VirtualizedContainerService.HintSize="434,70" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" Result="[strContent]" StatusCode="[intStatus]" TimeoutMS="6000">
+    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[&quot;{&quot;&quot;query&quot;&quot;:&quot;&quot;&quot; &amp; strQueryBody &amp; &quot;&quot;&quot;}&quot;]" BodyFormat="application/json" DisplayName="Page countert  - HTTP Request" EnableSSLVerification="True" EndPoint="[io_Config(&quot;BaseUrl&quot;).tostring &amp; io_Config(&quot;RequestEndPoint&quot;).tostring]" sap:VirtualizedContainerService.HintSize="434,70" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" Result="[strContent]" StatusCode="[intStatus]" TimeoutMS="30000">
       <ui:HttpClient.Attachments>
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.Attachments>
@@ -158,7 +158,7 @@
       </If.Else>
     </If>
     <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Page counter - Deserialize JSON" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jContent]" JsonString="[strContent]" />
-    <Assign DisplayName="date - Assign" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+    <Assign DisplayName="date - Assign" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Object">[io_Config("date")]</OutArgument>
       </Assign.To>
@@ -166,7 +166,7 @@
         <InArgument x:TypeArguments="x:String">[DateTimeOffset.FromUnixTimeMilliseconds(convert.ToInt64(jContent("data")("reportData")("report")("startTime").ToString)).DateTime.ToString("dd/MM/yy")]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="encounter ID - Assign" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign DisplayName="encounter ID - Assign" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Object">[io_Config("encounterId")]</OutArgument>
       </Assign.To>
@@ -174,7 +174,7 @@
         <InArgument x:TypeArguments="x:String">[jContent("data")("reportData")("report")("fights").first("encounterID").ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign DisplayName="name - Assign" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+    <Assign DisplayName="name - Assign" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_7">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Object">[io_Config("name")]</OutArgument>
       </Assign.To>

@@ -1,5 +1,5 @@
 {
-  "name": "WarcraftLogs_Performer",
+  "name": "WarcraftLogs_Performer_downloadReports",
   "projectId": "36a80a06-2bd5-4297-ba30-3e316949d626",
   "description": "Backgrounnd Robotic Enterprise Framework",
   "main": "Main.xaml",
@@ -12,7 +12,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "23.10.0.0",
-  "projectVersion": "1.0.2",
+  "projectVersion": "1.0.4",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,

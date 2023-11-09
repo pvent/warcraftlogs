@@ -12,6 +12,7 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "boolStopException&StateMachine_1",
         "TransactionItem&StateMachine_1",
         "SystemException&StateMachine_1",
         "BusinessException&StateMachine_1",
@@ -26,6 +27,7 @@
         "ShouldStop&Sequence_25"
       ],
       "ArgumentsSectionElementsOrder": [
+        "in_strMultiPerformer",
         "in_OrchestratorQueueName",
         "in_OrchestratorQueueFolder"
       ],
@@ -286,6 +288,32 @@
       "ArgumentsSectionElementsOrder": [
         "io_Config"
       ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/InitAllSettings.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dt_SettingsAndConstants&Sequence_5",
+        "dt_Assets&Sequence_6",
+        "AssetValue&Sequence_11"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_ConfigFile",
+        "in_ConfigSheets",
+        "out_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "CleanupBuckets.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "listStorageItems&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     }
