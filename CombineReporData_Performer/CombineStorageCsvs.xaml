@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CombineStorageCsvs" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1462,3255" sap2010:WorkflowViewState.IdRef="CleanupBuckets_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ucas="clr-namespace:UiPath.Core.Activities.Storage;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CombineStorageCsvs" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1463,3147" sap2010:WorkflowViewState.IdRef="CleanupBuckets_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ucas="clr-namespace:UiPath.Core.Activities.Storage;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -94,18 +94,18 @@
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CleanupBuckets" sap:VirtualizedContainerService.HintSize="684,3190" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CleanupBuckets" sap:VirtualizedContainerService.HintSize="684,3082" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ParallelForEach x:TypeArguments="x:String" DisplayName="Parallel For Each" sap:VirtualizedContainerService.HintSize="622,2824" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_2" Values="[{&quot;DeathEvents&quot;, &quot;Defensives&quot;, &quot;DmgDone&quot;, &quot;DpsPotsCasts&quot;, &quot;DriftingEmbers&quot;, &quot;HealingDone&quot;, &quot;HealingPotsCasts&quot;, &quot;HealingPotsHealing&quot;, &quot;HurtlingBarrage&quot;, &quot;SearingBreath&quot;}]">
+    <ParallelForEach x:TypeArguments="x:String" DisplayName="Parallel For Each" sap:VirtualizedContainerService.HintSize="622,2716" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_2" Values="[{&quot;DeathEvents&quot;, &quot;Defensives&quot;, &quot;DmgDone&quot;, &quot;DpsPotsCasts&quot;, &quot;DriftingEmbers&quot;, &quot;HealingDone&quot;, &quot;HealingPotsCasts&quot;, &quot;HealingPotsHealing&quot;, &quot;HurtlingBarrage&quot;, &quot;SearingBreath&quot;}]">
       <ActivityAction x:TypeArguments="x:String">
         <ActivityAction.Argument>
           <DelegateInArgument x:TypeArguments="x:String" Name="cItem" />
         </ActivityAction.Argument>
-        <Sequence DisplayName="Body - Storage Bucket" sap:VirtualizedContainerService.HintSize="572,2674" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence DisplayName="Body - Storage Bucket" sap:VirtualizedContainerService.HintSize="572,2566" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <Sequence.Variables>
             <Variable x:TypeArguments="scg:IEnumerable(ucas:StorageFileInfo)" Name="listStorageItems" />
             <Variable x:TypeArguments="x:String" Name="strCurFile" />
@@ -156,7 +156,7 @@
                       <OutArgument x:TypeArguments="x:String">[strOutputFileName]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:String">["data\Output\" &amp; cItem &amp; "csv"]</InArgument>
+                      <InArgument x:TypeArguments="x:String">["data\Output\" &amp; cItem &amp; ".csv"]</InArgument>
                     </Assign.Value>
                   </Assign>
                   <ui:WriteCsvFile AddHeaders="True" DataTable="[dtOtuputFile]" Delimitator="Comma" DisplayName="Write CSV" FilePath="[strOutputFileName]" sap:VirtualizedContainerService.HintSize="434,154" sap2010:WorkflowViewState.IdRef="WriteCsvFile_2" ShouldQuote="True" />
@@ -170,13 +170,13 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ForEach>
-          <ui:ForEach x:TypeArguments="ucas:StorageFileInfo" CurrentIndex="{x:Null}" DisplayName="All Files - For Each" sap:VirtualizedContainerService.HintSize="510,1189" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[listStorageItems]">
+          <ui:ForEach x:TypeArguments="ucas:StorageFileInfo" CurrentIndex="{x:Null}" DisplayName="All Files - For Each" sap:VirtualizedContainerService.HintSize="510,1081" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[listStorageItems]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="ucas:StorageFileInfo">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="ucas:StorageFileInfo" Name="cStorageItem" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body - All Files" sap:VirtualizedContainerService.HintSize="476,1003" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                <Sequence DisplayName="Body - All Files" sap:VirtualizedContainerService.HintSize="476,895" sap2010:WorkflowViewState.IdRef="Sequence_9">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="sd:DataTable" Name="dtCurrentTable" />
                   </Sequence.Variables>
@@ -197,7 +197,24 @@
                   <ui:ReadCsvFile DataTable="[dtCurrentTable]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[strCurFile]" sap:VirtualizedContainerService.HintSize="434,154" sap2010:WorkflowViewState.IdRef="ReadCsvFile_5" />
                   <ui:AppendCsvFile DataTable="[dtCurrentTable]" Delimitator="Comma" DisplayName="Append to CSV" FilePath="[strOutputFileName]" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="AppendCsvFile_2" />
                   <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="434,80" sap2010:WorkflowViewState.IdRef="DeleteFileX_2" Path="[strCurFile]" />
-                  <ucas:DeleteStorageFile TimeoutMS="{x:Null}" DisplayName="Delete Storage File" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="DeleteStorageFile_2" Path="[cStorageItem.FileFullPath]" StorageBucketName="[cStorageItem.StorageContainerName]" />
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,25" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,244" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ucas:DeleteStorageFile TimeoutMS="{x:Null}" DisplayName="Delete Storage File" sap:VirtualizedContainerService.HintSize="388,133" sap2010:WorkflowViewState.IdRef="DeleteStorageFile_2" Path="[cStorageItem.FileFullPath]" StorageBucketName="[cStorageItem.StorageContainerName]" />
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
                 </Sequence>
               </ActivityAction>
             </ui:ForEach.Body>
