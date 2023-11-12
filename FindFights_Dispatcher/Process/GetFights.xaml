@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>759,1741</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1463,1923</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetFights_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -115,7 +115,7 @@
       <AssemblyReference>System.Runtime.CompilerServices.Unsafe</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetFights" sap:VirtualizedContainerService.HintSize="648,1676" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetFights" sap:VirtualizedContainerService.HintSize="684,1858" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strContent" />
       <Variable x:TypeArguments="x:Int32" Name="intStatus" />
@@ -128,7 +128,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="586,245" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:05">
+    <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="622,245" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:05">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
           <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="JSON" AuthenticationType="None" Body="[&quot;{&quot;&quot;query&quot;&quot;:&quot;&quot;&quot; &amp; strQueryBody &amp; &quot;&quot;&quot;}&quot;]" BodyFormat="application/json" DisplayName="Get Fight  - HTTP Request" EnableSSLVerification="True" EndPoint="[in_Config(&quot;BaseUrl&quot;).tostring &amp; in_Config(&quot;RequestEndPoint&quot;).tostring]" sap:VirtualizedContainerService.HintSize="204,70" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="POST" Result="[strContent]" StatusCode="[intStatus]" TimeoutMS="30000">
@@ -156,71 +156,182 @@
         <ActivityFunc x:TypeArguments="x:Boolean" />
       </ui:RetryScope.Condition>
     </ui:RetryScope>
-    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="586,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jContent]" JsonString="[strContent]" />
-    <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="[intIdx]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="586,1180" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)]">
-      <ui:ForEach.Body>
-        <ActivityAction x:TypeArguments="njl:JToken">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="njl:JToken" Name="currentItem" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="552,994" sap2010:WorkflowViewState.IdRef="Sequence_2">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)(intIdx)(&quot;fights&quot;).Count &lt;&gt; 0]" sap:VirtualizedContainerService.HintSize="510,906" sap2010:WorkflowViewState.IdRef="If_1">
-              <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="476,724" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                  <Sequence.Variables>
-                    <Variable x:TypeArguments="x:String" Name="strReportCode" />
-                  </Sequence.Variables>
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="622,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jContent]" JsonString="[strContent]" />
+    <ParallelForEach x:TypeArguments="njl:JToken" DisplayName="Parallel For Each" sap:VirtualizedContainerService.HintSize="622,1107" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_1" Values="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)]">
+      <ActivityAction x:TypeArguments="njl:JToken">
+        <ActivityAction.Argument>
+          <DelegateInArgument x:TypeArguments="njl:JToken" Name="currentItem" />
+        </ActivityAction.Argument>
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="572,957" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If Condition="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)(intIdx)(&quot;fights&quot;).Count &lt;&gt; 0]" sap:VirtualizedContainerService.HintSize="510,846" sap2010:WorkflowViewState.IdRef="If_2">
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="476,664" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="strReportCode" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="report code - Assign" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strReportCode]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[jContent("data")("reportData")("reports")("data")(intIdx)("code").tostring]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <ui:DeserializeJsonArray JsonArray="{x:Null}" DisplayName="Deserialize JSON Array" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="DeserializeJsonArray_2" JsonString="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)(intIdx)(&quot;fights&quot;).ToString]" />
+                <ParallelForEach x:TypeArguments="njl:JToken" DisplayName="Parallel For Each" sap:VirtualizedContainerService.HintSize="434,289" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_2" Values="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)(intIdx)(&quot;fights&quot;)]">
+                  <ActivityAction x:TypeArguments="njl:JToken">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="njl:JToken" Name="item" />
+                    </ActivityAction.Argument>
+                    <uasc:AppendItemToCollection x:TypeArguments="s:Tuple(x:String, x:Int32)" Collection="[io_collTupleFights]" DisplayName="Append Items to Collection" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="AppendItemToCollection`1_4">
+                      <uasc:AppendItemToCollection.Items>
+                        <scg:List x:TypeArguments="InArgument(s:Tuple(x:String, x:Int32))" Capacity="4">
+                          <InArgument x:TypeArguments="s:Tuple(x:String, x:Int32)">[tuple.Create(jContent("data")("reportData")("reports")("data")(intIdx)("code").tostring, cint(currentItem("id").ToString))]</InArgument>
+                        </scg:List>
+                      </uasc:AppendItemToCollection.Items>
+                    </uasc:AppendItemToCollection>
+                  </ActivityAction>
+                </ParallelForEach>
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,25" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                  <ui:CommentOut.Body>
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="472,526" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="410,415" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)(intIdx)(&quot;fights&quot;)]">
+                        <ui:ForEach.Body>
+                          <ActivityAction x:TypeArguments="njl:JToken">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="njl:JToken" Name="currentItem" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uasc:AppendItemToCollection x:TypeArguments="s:Tuple(x:String, x:Int32)" Collection="[io_collTupleFights]" DisplayName="Append Items to Collection" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="AppendItemToCollection`1_3">
+                                <uasc:AppendItemToCollection.Items>
+                                  <scg:List x:TypeArguments="InArgument(s:Tuple(x:String, x:Int32))" Capacity="4">
+                                    <InArgument x:TypeArguments="s:Tuple(x:String, x:Int32)">[tuple.Create(jContent("data")("reportData")("reports")("data")(intIdx)("code").tostring, cint(currentItem("id").ToString))]</InArgument>
+                                  </scg:List>
+                                </uasc:AppendItemToCollection.Items>
+                              </uasc:AppendItemToCollection>
+                            </Sequence>
+                          </ActivityAction>
+                        </ui:ForEach.Body>
+                      </ui:ForEach>
+                    </Sequence>
+                  </ui:CommentOut.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:CommentOut>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_9" />
+            </If.Else>
+          </If>
+        </Sequence>
+      </ActivityAction>
+    </ParallelForEach>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="622,215" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,136" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="[intIdx]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)]">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="njl:JToken">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="njl:JToken" Name="currentItem" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="552,995" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="report code - Assign" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_1">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:String">[strReportCode]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:String">[jContent("data")("reportData")("reports")("data")(intIdx)("code").tostring]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <ui:DeserializeJsonArray JsonArray="{x:Null}" DisplayName="Deserialize JSON Array" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="DeserializeJsonArray_1" JsonString="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)(intIdx)(&quot;fights&quot;).ToString]" />
-                  <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="434,415" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)(intIdx)(&quot;fights&quot;)]">
-                    <ui:ForEach.Body>
-                      <ActivityAction x:TypeArguments="njl:JToken">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="njl:JToken" Name="currentItem" />
-                        </ActivityAction.Argument>
-                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <uasc:AppendItemToCollection x:TypeArguments="s:Tuple(x:String, x:Int32)" Collection="[io_collTupleFights]" DisplayName="Append Items to Collection" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="AppendItemToCollection`1_2">
-                            <uasc:AppendItemToCollection.Items>
-                              <scg:List x:TypeArguments="InArgument(s:Tuple(x:String, x:Int32))" Capacity="4">
-                                <InArgument x:TypeArguments="s:Tuple(x:String, x:Int32)">[tuple.Create(jContent("data")("reportData")("reports")("data")(intIdx)("code").tostring, cint(currentItem("id").ToString))]</InArgument>
-                              </scg:List>
-                            </uasc:AppendItemToCollection.Items>
-                          </uasc:AppendItemToCollection>
-                        </Sequence>
-                      </ActivityAction>
-                    </ui:ForEach.Body>
-                  </ui:ForEach>
+                  <If Condition="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)(intIdx)(&quot;fights&quot;).Count &lt;&gt; 0]" sap:VirtualizedContainerService.HintSize="510,907" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="476,725" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="strReportCode" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="report code - Assign" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[strReportCode]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[jContent("data")("reportData")("reports")("data")(intIdx)("code").tostring]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:DeserializeJsonArray JsonArray="{x:Null}" DisplayName="Deserialize JSON Array" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="DeserializeJsonArray_1" JsonString="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)(intIdx)(&quot;fights&quot;).ToString]" />
+                        <ui:ForEach x:TypeArguments="njl:JToken" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="434,415" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[jContent(&quot;data&quot;)(&quot;reportData&quot;)(&quot;reports&quot;)(&quot;data&quot;)(intIdx)(&quot;fights&quot;)]">
+                          <ui:ForEach.Body>
+                            <ActivityAction x:TypeArguments="njl:JToken">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="njl:JToken" Name="currentItem" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <uasc:AppendItemToCollection x:TypeArguments="s:Tuple(x:String, x:Int32)" Collection="[io_collTupleFights]" DisplayName="Append Items to Collection" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="AppendItemToCollection`1_2">
+                                  <uasc:AppendItemToCollection.Items>
+                                    <scg:List x:TypeArguments="InArgument(s:Tuple(x:String, x:Int32))" Capacity="4">
+                                      <InArgument x:TypeArguments="s:Tuple(x:String, x:Int32)">[tuple.Create(jContent("data")("reportData")("reports")("data")(intIdx)("code").tostring, cint(currentItem("id").ToString))]</InArgument>
+                                    </scg:List>
+                                  </uasc:AppendItemToCollection.Items>
+                                </uasc:AppendItemToCollection>
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:ForEach.Body>
+                        </ui:ForEach>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4" />
+                    </If.Else>
+                  </If>
                 </Sequence>
-              </If.Then>
-              <If.Else>
-                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4" />
-              </If.Else>
-            </If>
-          </Sequence>
-        </ActivityAction>
-      </ui:ForEach.Body>
-    </ui:ForEach>
+              </ActivityAction>
+            </ui:ForEach.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEach>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
   </Sequence>
 </Activity>

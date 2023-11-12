@@ -1,0 +1,12 @@
+﻿timestamp,type,targetName,targetId,targetGuid,targetIcon,abilityGameId,buffs,hitType,amount,mitigated,unmitigatedAmount,absorbed,targetMarker,pullId,pullCode,encounterId,encounterName,encounterDifficulty,wipeCutoff,encounterKill,encounterDate
+14976780,damage,Klejnotnilu,159,182929355,DeathKnight-Blood,402746,219788.360827.180612.401187.48707.195181.,1,0,67409,318580,251171,,19,fVzjtxmbL8DYvhdW,2685,Scalecommander Sarkareth,5,0,False,27/09/23
+15005334,damage,Lefox,198,175528845,Shaman-Restoration,402746,410231.396092.,1,231666,86914,318580,,,19,fVzjtxmbL8DYvhdW,2685,Scalecommander Sarkareth,5,0,False,27/09/23
+15005351,damage,Kryxoria,168,182687721,Priest-Holy,402746,410231.401187.396092.403295.,1,265471,53109,318580,,,19,fVzjtxmbL8DYvhdW,2685,Scalecommander Sarkareth,5,0,False,27/09/23
+15007643,damage,Cebulaczyna,163,121577266,Hunter-Marksmanship,402746,405613.396092.,1,245372,73208,318580,,6,19,fVzjtxmbL8DYvhdW,2685,Scalecommander Sarkareth,5,0,False,27/09/23
+15008034,damage,Bärman,157,181432362,Warrior-Fury,402746,396092.,1,232266,86314,318580,,,19,fVzjtxmbL8DYvhdW,2685,Scalecommander Sarkareth,5,0,False,27/09/23
+15010160,damage,Klejnotnilu,159,182929355,DeathKnight-Blood,402746,219788.360827.180612.195181.,1,254991,63589,318580,,,19,fVzjtxmbL8DYvhdW,2685,Scalecommander Sarkareth,5,0,False,27/09/23
+15024394,damage,Kryxoria,168,182687721,Priest-Holy,402746,410231.396092.403295.,1,278258,40322,318580,,,19,fVzjtxmbL8DYvhdW,2685,Scalecommander Sarkareth,5,0,False,27/09/23
+15024394,damage,Prohus,160,181500240,Evoker-Augmentation,402746,410231.20707.403264.,1,238228,80352,318580,,,19,fVzjtxmbL8DYvhdW,2685,Scalecommander Sarkareth,5,0,False,27/09/23
+15028213,damage,Pazuzell,153,140773839,DemonHunter-Vengeance,402746,360827.396092.203819.391166.203981.247456.,1,173698,68423,242121,,,19,fVzjtxmbL8DYvhdW,2685,Scalecommander Sarkareth,5,0,False,27/09/23
+15028487,damage,Prohus,160,181500240,Evoker-Augmentation,402746,410231.20707.403264.,1,237273,81307,318580,,,19,fVzjtxmbL8DYvhdW,2685,Scalecommander Sarkareth,5,0,False,27/09/23
+15029645,damage,Klejnotnilu,159,182929355,DeathKnight-Blood,402746,219788.360827.81256.401187.195181.,1,249077,69503,318580,,,19,fVzjtxmbL8DYvhdW,2685,Scalecommander Sarkareth,5,0,False,27/09/23

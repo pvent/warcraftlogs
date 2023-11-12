@@ -3,11 +3,12 @@
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_strId" Type="InArgument(x:String)" />
     <x:Property Name="in_strCode" Type="InArgument(x:String)" />
+    <x:Property Name="in_intWipeCutoff" Type="InArgument(x:Int32)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>462,2425</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>562,3168</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetFights_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -126,11 +127,15 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Run graphql post request" sap:VirtualizedContainerService.HintSize="472,2360" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Run graphql post request" sap:VirtualizedContainerService.HintSize="572,3103" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="intStatus" />
       <Variable x:TypeArguments="njl:JObject" Name="jContent" />
-      <Variable x:TypeArguments="x:String" Default="[&quot;{reportData{report(code:\&quot;&quot;&quot; &amp; in_strCode &amp; &quot;\&quot;&quot;){summary:table(dataType:Summary,fightIDs:&quot; &amp; in_strId &amp; &quot;),defensives:table(dataType:Casts,fightIDs:&quot; &amp; in_strId &amp; &quot;,filterExpression:\&quot;&quot;ability.id IN (49998,48707,48743,49039,48792,198589,196555,5487,22842,22812,108238,319454,61336,363916,374348,109304,272679,264735,18265,342245,55342,110959,45438,235450,235313,11426,235219,122783,122278,22630,122470,498,403876,1022,642,633,184662,586,19236,47585,1966,185311,5277,31224,974,108271,198103,234153,6789,108416,104773,34428,386208,202168,23920,383762,190456,118038,184364,6262,370511) AND source.role!='tank'\&quot;&quot;),healingCasts:table(dataType:Casts,fightIDs:&quot; &amp; in_strId &amp; &quot;,filterExpression:\&quot;&quot;ability.id IN(6262,370511)\&quot;&quot;),healingDone:table(dataType:Healing,fightIDs:&quot; &amp; in_strId &amp; &quot;,filterExpression:\&quot;&quot;ability.id IN(6262,370511)\&quot;&quot;),dpsPotionCasts:table(dataType:Casts,fightIDs:&quot; &amp; in_strId &amp; &quot;,filterExpression:\&quot;&quot;ability.id IN(371028)\&quot;&quot;)}}}&quot;]" Name="strQueryBody" />
+      <Variable x:TypeArguments="x:String" Name="strQueryBody">
+        <Variable.Default>
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;{reportData{report(code:\&quot;&quot;&quot; &amp; in_strCode &amp; &quot;\&quot;&quot;){summary:table(dataType:Summary,fightIDs:&quot; &amp; in_strId &amp; strWipeCutoff &amp; &quot;),defensives:table(dataType:Casts,fightIDs:&quot; &amp; in_strId &amp; &quot;,&quot; &amp; strWipeCutoff &amp; &quot;filterExpression:\&quot;&quot;ability.id IN (49998,48707,48743,49039,48792,198589,196555,5487,22842,22812,108238,319454,61336,363916,374348,109304,272679,264735,18265,342245,55342,110959,45438,235450,235313,11426,235219,122783,122278,22630,122470,498,403876,1022,642,633,184662,586,19236,47585,1966,185311,5277,31224,974,108271,198103,234153,6789,108416,104773,34428,386208,202168,23920,383762,190456,118038,184364,6262,370511) AND source.role!='tank'\&quot;&quot;),healingCasts:table(dataType:Casts,fightIDs:&quot; &amp; in_strId &amp; &quot;,&quot; &amp; strWipeCutoff &amp; &quot;filterExpression:\&quot;&quot;ability.id IN(6262,370511)\&quot;&quot;),healingDone:table(dataType:Healing,fightIDs:&quot; &amp; in_strId &amp; &quot;,&quot; &amp; strWipeCutoff &amp; &quot;filterExpression:\&quot;&quot;ability.id IN(6262,370511)\&quot;&quot;),dpsPotionCasts:table(dataType:Casts,fightIDs:&quot; &amp; in_strId &amp; &quot;,&quot; &amp; strWipeCutoff &amp; &quot;filterExpression:\&quot;&quot;ability.id IN(371028)\&quot;&quot;)}}}&quot;" />
+        </Variable.Default>
+      </Variable>
       <Variable x:TypeArguments="x:Int32" Name="intIdx" />
       <Variable x:TypeArguments="x:String" Name="strLastContent" />
       <Variable x:TypeArguments="x:String" Name="strContent" />
@@ -143,14 +148,52 @@
       <Variable x:TypeArguments="sd:DataTable" Name="dtDpsPotsCasts" />
       <Variable x:TypeArguments="s:String[]" Default="[{&quot;dtDmgDone&quot;, &quot;dtHealingDone&quot;, &quot;dtDeathEvents&quot;, &quot;dtHealingPotsCasts&quot;, &quot;dtHealingPotsHealing&quot;, &quot;dtDpsPotsCasts&quot;}]" Name="arrDtNames" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtDefensives" />
+      <Variable x:TypeArguments="x:String" Name="strWipeCutoff" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="410,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;started: GetCommonData&quot;]" />
-    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[&quot;{&quot;&quot;query&quot;&quot;:&quot;&quot;&quot; &amp; strQueryBody &amp; &quot;&quot;&quot;}&quot;]" BodyFormat="application/json" DisplayName="common data  - HTTP Request" EnableSSLVerification="True" EndPoint="[in_Config(&quot;BaseUrl&quot;).tostring &amp; in_Config(&quot;RequestEndPoint&quot;).tostring]" sap:VirtualizedContainerService.HintSize="410,70" sap2010:WorkflowViewState.IdRef="HttpClient_4" Method="POST" Result="[strContent]" StatusCode="[intStatus]" TimeoutMS="30000">
+    <If Condition="[not in_intWipeCutoff = 0]" DisplayName="Wipe Cutoff mode - If" sap:VirtualizedContainerService.HintSize="510,884" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="476,473" sap2010:WorkflowViewState.IdRef="Sequence_14">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign DisplayName="wipe cutoff calc - Assign" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strWipeCutoff]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[",wipeCutoff:" &amp; in_intWipeCutoff.ToString &amp; ","]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;GetCommonData: wipeCutoff&quot;]" />
+          <Assign DisplayName="query body update - Assign" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strQueryBody]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">["{reportData{report(code:\""" &amp; in_strCode &amp; "\""){summary:table(dataType:Summary,fightIDs:" &amp; in_strId &amp; strWipeCutoff &amp; "),defensives:table(dataType:Casts,fightIDs:" &amp; in_strId &amp;  strWipeCutoff &amp; "filterExpression:\""ability.id IN (49998,48707,48743,49039,48792,198589,196555,5487,22842,22812,108238,319454,61336,363916,374348,109304,272679,264735,18265,342245,55342,110959,45438,235450,235313,11426,235219,122783,122278,22630,122470,498,403876,1022,642,633,184662,586,19236,47585,1966,185311,5277,31224,974,108271,198103,234153,6789,108416,104773,34428,386208,202168,23920,383762,190456,118038,184364,6262,370511) AND source.role!='tank'\""),healingCasts:table(dataType:Casts,fightIDs:" &amp; in_strId &amp;  strWipeCutoff &amp; "filterExpression:\""ability.id IN(6262,370511)\""),healingDone:table(dataType:Healing,fightIDs:" &amp; in_strId &amp;  strWipeCutoff &amp; "filterExpression:\""ability.id IN(6262,370511)\""),dpsPotionCasts:table(dataType:Casts,fightIDs:" &amp; in_strId &amp;  strWipeCutoff &amp; "filterExpression:\""ability.id IN(371028)\"")}}}"]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_15">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;started: GetCommonData&quot;]" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[&quot;{&quot;&quot;query&quot;&quot;:&quot;&quot;&quot; &amp; strQueryBody &amp; &quot;&quot;&quot;}&quot;]" BodyFormat="application/json" DisplayName="common data  - HTTP Request" EnableSSLVerification="True" EndPoint="[in_Config(&quot;BaseUrl&quot;).tostring &amp; in_Config(&quot;RequestEndPoint&quot;).tostring]" sap:VirtualizedContainerService.HintSize="510,70" sap2010:WorkflowViewState.IdRef="HttpClient_4" Method="POST" Result="[strContent]" StatusCode="[intStatus]" TimeoutMS="30000">
       <ui:HttpClient.Attachments>
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.Attachments>
@@ -170,7 +213,7 @@
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
-    <If Condition="[intStatus &lt;&gt; 200]" sap:VirtualizedContainerService.HintSize="410,360" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[intStatus &lt;&gt; 200]" sap:VirtualizedContainerService.HintSize="510,360" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
@@ -191,57 +234,57 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Content output  - Deserialize JSON" sap:VirtualizedContainerService.HintSize="410,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jContent]" JsonString="[strContent]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="healingPots - Casts - createTableFromJson_Casts.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="410,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Process\createTableFromJson_Casts.xaml">
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Content output  - Deserialize JSON" sap:VirtualizedContainerService.HintSize="510,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jContent]" JsonString="[strContent]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="healingPots - Casts - createTableFromJson_Casts.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Process\createTableFromJson_Casts.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtOutputData">[dtHealingPotsCasts]</OutArgument>
         <InArgument x:TypeArguments="njl:JToken" x:Key="in_jContent">[jContent("data")("reportData")("report")("healingCasts")("data")("entries")]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_strTableName">dtHealingPotsCasts</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="healingPots - Healing - Process\createTableFromJson_HealingDone.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="410,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Process\createTableFromJson_HealingDone.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="healingPots - Healing - Process\createTableFromJson_HealingDone.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Process\createTableFromJson_HealingDone.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtOutputData">[dtHealingPotsHealing]</OutArgument>
         <InArgument x:TypeArguments="njl:JToken" x:Key="in_jContent">[jContent("data")("reportData")("report")("healingDone")("data")("entries")]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_strTableName">dtHealingPotsHealing</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="dpsPots - casts - createTableFromJson_Casts.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="410,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Process\createTableFromJson_Casts.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="dpsPots - casts - createTableFromJson_Casts.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Process\createTableFromJson_Casts.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtOutputData">[dtDpsPotsCasts]</OutArgument>
         <InArgument x:TypeArguments="njl:JToken" x:Key="in_jContent">[jContent("data")("reportData")("report")("dpsPotionCasts")("data")("entries")]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_strTableName">dtDpsPotsCasts</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="defensives - casts - createTableFromJson_Casts.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="410,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Process\createTableFromJson_Casts.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="defensives - casts - createTableFromJson_Casts.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Process\createTableFromJson_Casts.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtOutputData">[dtDefensives]</OutArgument>
         <InArgument x:TypeArguments="njl:JToken" x:Key="in_jContent">[jContent("data")("reportData")("report")("defensives")("data")("entries")]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_strTableName">dtDefensives</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="dmgDone - summary - createTableFromJson_Summary_DmgHealing.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="410,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\createTableFromJson_Summary_DmgHealing.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="dmgDone - summary - createTableFromJson_Summary_DmgHealing.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process\createTableFromJson_Summary_DmgHealing.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtOutputData">[dtDmgDone]</OutArgument>
         <InArgument x:TypeArguments="njl:JToken" x:Key="in_jContent">[jContent("data")("reportData")("report")("summary")("data")("damageDone")]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_strTableName">dtDmgDone</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="healing - summary - createTableFromJson_Summary_DmgHealing.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="410,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Process\createTableFromJson_Summary_DmgHealing.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="healing - summary - createTableFromJson_Summary_DmgHealing.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Process\createTableFromJson_Summary_DmgHealing.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtOutputData">[dtHealingDone]</OutArgument>
         <InArgument x:TypeArguments="njl:JToken" x:Key="in_jContent">[jContent("data")("reportData")("report")("summary")("data")("healingDone")]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_strTableName">dtHealingDone</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\createTableFromJson_Summary_DeathEvents.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="410,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Process\createTableFromJson_Summary_DeathEvents.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\createTableFromJson_Summary_DeathEvents.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Process\createTableFromJson_Summary_DeathEvents.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtOutputData">[dtDeathEvents]</OutArgument>
         <InArgument x:TypeArguments="njl:JToken" x:Key="in_jContent">[jContent("data")("reportData")("report")("summary")("data")("deathEvents")]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_strTableName">dtDeathEvents</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:ForEach x:TypeArguments="sd:DataTable" CurrentIndex="[intIdx]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="410,387" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[{dtDmgDone, dtHealingDone, dtDeathEvents, dtHealingPotsCasts, dtHealingPotsHealing, dtDpsPotsCasts, dtDefensives}]">
+    <ui:ForEach x:TypeArguments="sd:DataTable" CurrentIndex="[intIdx]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="510,387" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[{dtDmgDone, dtHealingDone, dtDeathEvents, dtHealingPotsCasts, dtHealingPotsHealing, dtDpsPotsCasts, dtDefensives}]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="sd:DataTable">
           <ActivityAction.Argument>
@@ -258,10 +301,21 @@
             </sap:WorkflowViewStateService.ViewState>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\formatTableUploadToBucket.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Process\formatTableUploadToBucket.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_strId">[in_strId]</InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_strCode">[in_strCode]</InArgument>
-                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtData">[cDt]</InArgument>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                  <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_strId">
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strId" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_strCode">
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strCode" />
+                </InArgument>
+                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtData">
+                  <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="cDt" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_intWipeCutoff">
+                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_intWipeCutoff" />
+                </InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
           </Sequence>

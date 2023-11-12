@@ -4,11 +4,12 @@
     <x:Property Name="in_strId" Type="InArgument(x:String)" />
     <x:Property Name="in_strCode" Type="InArgument(x:String)" />
     <x:Property Name="in_dtData" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_intWipeCutoff" Type="InArgument(x:Int32)" />
   </x:Members>
   <this:formatTableUploadToBucket.in_dtData>
     <InArgument x:TypeArguments="sd:DataTable" />
   </this:formatTableUploadToBucket.in_dtData>
-  <sap:VirtualizedContainerService.HintSize>1463,2433</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1463,2659</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -124,7 +125,7 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="formatTableAndUpload" sap:VirtualizedContainerService.HintSize="496,2368" sap2010:WorkflowViewState.IdRef="Sequence_14">
+  <Sequence DisplayName="formatTableAndUpload" sap:VirtualizedContainerService.HintSize="496,2594" sap2010:WorkflowViewState.IdRef="Sequence_14">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strItemName" />
     </Sequence.Variables>
@@ -138,6 +139,7 @@
     <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="encounterId" DataTable="[in_dtData]" DefaultValue="[in_Config(&quot;encounterId&quot;)]" DisplayName="encounterId- Add Data Column" sap:VirtualizedContainerService.HintSize="434,186" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_8" />
     <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="encounterName" DataTable="[in_dtData]" DefaultValue="[in_Config(&quot;name&quot;)]" DisplayName="encounterName- Add Data Column" sap:VirtualizedContainerService.HintSize="434,186" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_6" />
     <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="encounterDifficulty" DataTable="[in_dtData]" DefaultValue="[in_Config(&quot;difficulty&quot;)]" DisplayName="diff - Add Data Column" sap:VirtualizedContainerService.HintSize="434,186" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_5" />
+    <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="wipeCutoff" DataTable="[in_dtData]" DefaultValue="[in_intWipeCutoff]" DisplayName="wipe cutoff - Add Data Column" sap:VirtualizedContainerService.HintSize="434,186" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_10" />
     <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="encounterKill" DataTable="[in_dtData]" DefaultValue="[in_Config(&quot;kill&quot;)]" DisplayName="kill - Add Data Column" sap:VirtualizedContainerService.HintSize="434,186" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_4" />
     <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="encounterDate" DataTable="[in_dtData]" DefaultValue="[in_Config(&quot;date&quot;)]" DisplayName="date - Add Data Column" sap:VirtualizedContainerService.HintSize="434,186" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_3" />
     <Assign DisplayName="itemName - Assign" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_11">
@@ -145,11 +147,11 @@
         <OutArgument x:TypeArguments="x:String">[strItemName]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[in_dtData.TableName &amp; "_" &amp; in_strCode &amp; "_" &amp; in_strId &amp; ".csv"]</InArgument>
+        <InArgument x:TypeArguments="x:String">[in_dtData.TableName &amp; "_" &amp; in_strCode &amp; "_" &amp; in_strId &amp; "_" &amp; in_intWipeCutoff.ToString &amp; ".csv"]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:WriteCsvFile AddHeaders="True" DataTable="[in_dtData]" Delimitator="Comma" DisplayName="Write CSV" FilePath="[&quot;Data\Temp\&quot; &amp; strItemName]" sap:VirtualizedContainerService.HintSize="434,154" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" ShouldQuote="True" />
-    <ucas:UploadStorageFile FileResource="{x:Null}" TimeoutMS="{x:Null}" Destination="[strItemName]" DisplayName="Upload Storage File" sap:VirtualizedContainerService.HintSize="434,239" sap2010:WorkflowViewState.IdRef="UploadStorageFile_1" Path="[&quot;Data\Temp\&quot; &amp; strItemName]" StorageBucketName="[right(in_dtData.TableName,in_dtData.tablename.Length-2)]" />
-    <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="434,80" sap2010:WorkflowViewState.IdRef="DeleteFileX_2" Path="[&quot;Data\Temp\&quot; &amp; strItemName]" />
+    <ucas:UploadStorageFile FileResource="{x:Null}" TimeoutMS="{x:Null}" Destination="[strItemName]" DisplayName="Upload Storage File" sap:VirtualizedContainerService.HintSize="434,239" sap2010:WorkflowViewState.IdRef="UploadStorageFile_1" Path="[&quot;Data\Temp\&quot; &amp; strItemName]" StorageBucketName="[right(in_dtData.TableName,in_dtData.tablename.Length-2) &amp; if(in_intWipeCutoff.Equals(0),nothing,&quot;WipeCut&quot;)]" />
+    <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="434,80" sap2010:WorkflowViewState.IdRef="DeleteFileX_4" Path="[&quot;Data\Temp\&quot; &amp; strItemName]" />
   </Sequence>
 </Activity>

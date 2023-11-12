@@ -1,0 +1,4 @@
+﻿name,id,guid,type,icon,deathTime,abilityName,abilityGuid,abilityType,pullId,pullCode,encounterId,encounterName,encounterDifficulty,wipeCutoff,encounterKill,encounterDate
+Kryxoria,168,182687721,Priest,Priest-Holy,72017,,,,19,fVzjtxmbL8DYvhdW,2685,Scalecommander Sarkareth,5,3,False,27/09/23
+Shlauffu,200,182304349,Priest,Priest-Shadow,75235,Scorching Detonation,401525,4,19,fVzjtxmbL8DYvhdW,2685,Scalecommander Sarkareth,5,3,False,27/09/23
+Nugera,203,181593749,Evoker,Evoker-Augmentation,80019,Blazing Blast,401340,4,19,fVzjtxmbL8DYvhdW,2685,Scalecommander Sarkareth,5,3,False,27/09/23

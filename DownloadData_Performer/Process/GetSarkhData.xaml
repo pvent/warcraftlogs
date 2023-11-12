@@ -3,11 +3,12 @@
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_strId" Type="InArgument(x:String)" />
     <x:Property Name="in_strCode" Type="InArgument(x:String)" />
+    <x:Property Name="in_intWipeCutoff" Type="InArgument(x:Int32)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1462,1197</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1463,1614</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetFights_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -126,7 +127,7 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Run graphql post request" sap:VirtualizedContainerService.HintSize="450,1050" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Run graphql post request" sap:VirtualizedContainerService.HintSize="472,1549" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="intIdx" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtHurtlingBarrage" />
@@ -138,56 +139,56 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;started: getSarkhData&quot;]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\GetSarkhData_HurtlingBarrage.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Process\GetSarkhData_HurtlingBarrage.xaml">
+    <If Condition="[not in_intWipeCutoff = 0]" DisplayName="Wipe Cutoff mode - If" sap:VirtualizedContainerService.HintSize="410,640" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;getSarkhData: wipeCutoff&quot;]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,229" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;started: getSarkhData&quot;]" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\GetSarkhData_HurtlingBarrage.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="410,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Process\GetSarkhData_HurtlingBarrage.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strId">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strId" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strCode">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strCode" />
-        </InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtHurtlingBarrage">
-          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtHurtlingBarrage" />
-        </OutArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strId">[in_strId]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strCode">[in_strCode]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtHurtlingBarrage">[dtHurtlingBarrage]</OutArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_intWipeCutoff">[in_intWipeCutoff]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\GetSarkhData_SearingBreath.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Process\GetSarkhData_SearingBreath.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\GetSarkhData_SearingBreath.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="410,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Process\GetSarkhData_SearingBreath.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strId">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strId" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strCode">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strCode" />
-        </InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtSearingBreath">
-          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtSearingBreath" />
-        </OutArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strId">[in_strId]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strCode">[in_strCode]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtSearingBreath">[dtSearingBreath]</OutArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_intWipeCutoff">[in_intWipeCutoff]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\GetSarkhData_DriftingEmbers.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Process\GetSarkhData_DriftingEmbers.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Process\GetSarkhData_DriftingEmbers.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="410,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Process\GetSarkhData_DriftingEmbers.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strId">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strId" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strCode">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strCode" />
-        </InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtDriftingEmbers">
-          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtDriftingEmbers" />
-        </OutArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strId">[in_strId]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strCode">[in_strCode]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtDriftingEmbers">[dtDriftingEmbers]</OutArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_intWipeCutoff">[in_intWipeCutoff]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:ForEach x:TypeArguments="sd:DataTable" CurrentIndex="[intIdx]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="388,299" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[{dtDriftingEmbers, dtSearingBreath, dtHurtlingBarrage}]">
+    <ui:ForEach x:TypeArguments="sd:DataTable" CurrentIndex="[intIdx]" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="410,299" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[{dtDriftingEmbers, dtSearingBreath, dtHurtlingBarrage}]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="sd:DataTable">
           <ActivityAction.Argument>
@@ -199,6 +200,7 @@
               <InArgument x:TypeArguments="x:String" x:Key="in_strId">[in_strId]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_strCode">[in_strCode]</InArgument>
               <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtData">[cDt]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_intWipeCutoff">[in_intWipeCutoff]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </ActivityAction>

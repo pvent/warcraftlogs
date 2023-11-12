@@ -1,5 +1,5 @@
 {
-  "name": "WarcraftLogs_Performer_downloadReports",
+  "name": "WarcraftLogs_Performer_combineReports",
   "projectId": "36a80a06-2bd5-4297-ba30-3e316949d626",
   "description": "Backgrounnd Robotic Enterprise Framework",
   "main": "Main.xaml",
